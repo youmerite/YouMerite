@@ -1,0 +1,351 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You Mérite • Luxury Gift Boxes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f0c07;
+      --text: #f5f0e8;
+      --gold: #d4af37;
+      --accent: #a61c23;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Playfair Display', serif;
+      line-height: 1.6;
+    }
+
+    header {
+      height: 70vh;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80') center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 5rem;
+      color: var(--gold);
+      letter-spacing: 5px;
+      text-shadow: 0 4px 20px rgba(212,175,55,0.4);
+    }
+
+    .cart-icon {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: var(--gold);
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    .cart-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cart-content {
+      background: var(--bg);
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      padding: 30px;
+      max-height: 85vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2.5rem;
+      color: var(--gold);
+      cursor: pointer;
+    }
+
+    .product-card {
+      background: rgba(212,175,55,0.05);
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      margin: 40px auto;
+      max-width: 400px;
+    }
+
+    .btn-primary {
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold);
+      color: var(--bg);
+    }
+
+    #customer-form input,
+    #customer-form textarea,
+    #customer-form select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--gold);
+      color: var(--text);
+      border-radius: 6px;
+      font-family: inherit;
+    }
+
+    #success-message {
+      color: var(--gold);
+      font-size: 1.4rem;
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gold);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Netlify Forms detection (gizli) -->
+  <form name="order-submissions" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="order-submissions">
+    <input name="name">
+    <input name="phone">
+    <input name="city">
+    <input name="delivery_address">
+    <input name="delivery_type">
+    <input name="cart_items">
+    <input name="total_price">
+  </form>
+
+  <!-- Cart Icon -->
+  <div class="cart-icon" id="cart-icon">🛒 <span id="cart-count">0</span></div>
+
+  <header>
+    <div>
+      <h1>You Mérite</h1>
+      <p>Luxury Gift Boxes</p>
+      <p style="font-size:14px; opacity:0.8; margin-top:10px;">
+        🚚 Cash on Delivery • Phone Confirmation Required
+      </p>
+    </div>
+  </header>
+
+  <section style="padding: 60px 20px; text-align:center;">
+    <div class="product-card">
+      <h3>Royal Mérite Woman</h3>
+      <p>Luxury gift box</p>
+      <p style="color:var(--gold); font-size:1.3rem;">22,000 DZD</p>
+      <button class="btn-primary add-to-cart"
+              data-name="Royal Mérite Woman"
+              data-price="22000">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- Diğer ürünleri buraya ekleyebilirsin -->
+  </section>
+
+  <!-- Cart Modal -->
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-content">
+      <span class="close-modal" id="close-modal">×</span>
+
+      <h2>Your Cart</h2>
+      <div id="cart-items"></div>
+
+      <p style="font-size:1.4rem; margin:20px 0; text-align:right;">
+        Total: <strong id="cart-total">0 DZD</strong>
+      </p>
+
+      <form id="customer-form">
+        <input type="hidden" name="form-name" value="order-submissions">
+
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="tel" name="phone" placeholder="Phone Number" pattern="[0-9+ ]{8,15}" required>
+        <input type="text" name="city" placeholder="City" required>
+        <textarea name="delivery_address" placeholder="Full Address" required rows="4"></textarea>
+
+        <select name="delivery_type" required>
+          <option value="" disabled selected>Delivery to</option>
+          <option value="home">Home</option>
+          <option value="office">Office</option>
+        </select>
+
+        <p style="font-size:13px; opacity:0.8; margin:15px 0;">
+          🚚 Payment: Cash on Delivery (DZD)
+        </p>
+
+        <p style="font-size:13px; opacity:0.7;">
+          📞 Orders are confirmed by phone call. Unconfirmed orders will not be shipped.
+        </p>
+
+        <button type="submit" class="btn-primary" style="width:100%; margin-top:20px;">
+          Submit Order
+        </button>
+      </form>
+
+      <div id="success-message"></div>
+    </div>
+  </div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+      document.getElementById('cart-count').textContent = 
+        cart.reduce((s, i) => s + i.quantity, 0);
+    }
+
+    function updateCartDisplay() {
+      const itemsDiv = document.getElementById('cart-items');
+      const totalEl = document.getElementById('cart-total');
+      itemsDiv.innerHTML = '';
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <span>${item.name} × ${item.quantity}</span>
+          <span>${(item.price * item.quantity).toLocaleString()} DZD</span>
+          <button onclick="removeFromCart(${index})">×</button>
+        `;
+        itemsDiv.appendChild(div);
+      });
+
+      totalEl.textContent = total.toLocaleString() + ' DZD';
+    }
+
+    window.addToCart = function(name, price) {
+      const found = cart.find(i => i.name === name);
+      if (found) found.quantity++;
+      else cart.push({ name, price: Number(price), quantity: 1 });
+      saveCart();
+      updateCartDisplay();
+      alert(`${name} added to cart!`);
+    };
+
+    window.removeFromCart = function(index) {
+      cart.splice(index, 1);
+      saveCart();
+      updateCartDisplay();
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Cart icon click
+      document.getElementById('cart-icon').onclick = () => {
+        document.getElementById('cart-modal').style.display = 'flex';
+        updateCartDisplay();
+      };
+
+      // Close modal
+      document.getElementById('close-modal').onclick = () => {
+        document.getElementById('cart-modal').style.display = 'none';
+      };
+
+      // Add to cart buttons
+      document.querySelectorAll('.add-to-cart').forEach(btn => {
+        btn.onclick = () => addToCart(btn.dataset.name, btn.dataset.price);
+      });
+
+      // Form submission
+      document.getElementById('customer-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = new URLSearchParams();
+        formData.append('form-name', 'order-submissions');
+        formData.append('name', e.target.name.value);
+        formData.append('phone', e.target.phone.value);
+        formData.append('city', e.target.city.value);
+        formData.append('delivery_address', e.target.delivery_address.value);
+        formData.append('delivery_type', e.target.delivery_type.value);
+        formData.append('cart_items', cart.map(i => `${i.name} × ${i.quantity}`).join('\n'));
+        formData.append('total_price', document.getElementById('cart-total').textContent);
+
+        try {
+          // Netlify Forms submission
+          const formRes = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: formData.toString()
+          });
+
+          if (!formRes.ok) {
+            throw new Error(`Netlify Forms failed: ${await formRes.text()}`);
+          }
+
+          // Telegram notification
+          await fetch('/.netlify/functions/telegram', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(Object.fromEntries(formData))
+          });
+
+          // Success message
+          document.getElementById('success-message').innerHTML = `
+            <p style="color:#d4af37; font-size:1.4rem; text-align:center;">
+              ✅ Order received successfully!<br>
+              💰 Total: ${document.getElementById('cart-total').textContent}<br>
+              🚚 Cash on Delivery (DZD)<br>
+              📞 We will call you shortly to confirm.
+            </p>
+          `;
+
+          // Hide form and clear cart
+          e.target.style.display = 'none';
+          cart = [];
+          saveCart();
+          updateCartDisplay();
+
+          setTimeout(() => {
+            document.getElementById('cart-modal').style.display = 'none';
+          }, 6000);
+
+        } catch (err) {
+          console.error('Submission error:', err);
+          alert('Submission failed. Please try again or contact us directly.');
+        }
+      });
+
+      // Initial load
+      saveCart();
+      updateCartDisplay();
+    });
+  </script>
+</body>
+</html>

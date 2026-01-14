@@ -1,0 +1,4 @@
+[build]
+  command = "npm run build || true"   # or empty if no build command
+  publish = "."
+  environment = { NETLIFY_CLEAR_CACHE = "true" }
