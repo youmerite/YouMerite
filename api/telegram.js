@@ -4,37 +4,34 @@ export const handler = async (event) => {
     if (event.body) {
       data = JSON.parse(event.body);
     } else {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: "Empty body" })
-      };
+      return { statusCode: 400, body: JSON.stringify({ error: "Empty body" }) };
     }
   } catch (err) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ error: "Invalid JSON" })
-    };
+    return { statusCode: 400, body: JSON.stringify({ error: "Invalid JSON" }) };
   }
 
   const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
   const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
+  // Güvenli şekilde cart_items
+  const cartList = Array.isArray(data.cart_items) ? data.cart_items.join("\n") : (data.cart_items || "");
+
   const message = `
 📦 NEW ORDER - YOU MÉRITE
 
-👤 Name: ${data.name}
-📞 Phone: ${data.phone}
-🏙 City: ${data.city}
-🏠 Address: ${data.delivery_address}
-🚚 Delivery: ${data.delivery_type}
+👤 Name: ${data.name || "N/A"}
+📞 Phone: ${data.phone || "N/A"}
+🏙 City: ${data.city || "N/A"}
+🏠 Address: ${data.delivery_address || "N/A"}
+🚚 Delivery: ${data.delivery_type || "N/A"}
 
 🛒 Items:
-${Array.isArray(data.cart_items) ? data.cart_items.join("\n") : data.cart_items}
+${cartList}
 
-💰 Total: ${data.total_price}
+💰 Total: ${data.total_price || "N/A"}
 
 💵 Payment: CASH ON DELIVERY
-  `;
+`;
 
   const url = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
 
@@ -47,14 +44,12 @@ ${Array.isArray(data.cart_items) ? data.cart_items.join("\n") : data.cart_items}
 
     const result = await res.json();
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ success: true, result })
-    };
+    if (!result.ok) {
+      return { statusCode: 500, body: JSON.stringify({ error: result.description }) };
+    }
+
+    return { statusCode: 200, body: JSON.stringify({ success: true, result }) };
   } catch (err) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: err.message })
-    };
+    return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
   }
 };
