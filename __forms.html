@@ -1,17 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><title>Form Detection Only</title></head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Form</title>
+</head>
 <body>
-  <!-- This page is never visited - only for Netlify to detect the form -->
-  <form name="order-submissions" method="POST" data-netlify="true">
-    <input type="hidden" name="form-name" value="order-submissions">
-    <input name="name">
-    <input name="phone">
-    <input name="city">
-    <input name="delivery_address">
-    <input name="delivery_type">
-    <input name="cart_items">
-    <input name="total_price">
+  <!-- Customer Form -->
+  <form id="customer-form">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="tel" name="phone" placeholder="Phone Number" required>
+    <input type="text" name="city" placeholder="City" required>
+    <textarea name="delivery_address" placeholder="Full Address" required rows="4"></textarea>
+    <select name="delivery_type" required>
+      <option value="" disabled selected>Delivery to</option>
+      <option value="home">Home</option>
+      <option value="office">Office</option>
+    </select>
+
+    <input type="hidden" name="cart_items" value="">
+    <input type="hidden" name="total_price" value="">
+
+    <button type="submit">Submit Order</button>
   </form>
+
+  <div id="success-message" style="color: green; margin-top:20px;"></div>
+
+  <script>
+    // Örnek cart verisi (sitenin cart sistemi varsa buradan al)
+    let cart = [
+      {name: "Royal Mérite Woman", quantity: 1, price: 22000}
+    ];
+
+    document.getElementById('customer-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Form verilerini al
+      const form = e.target;
+      const data = {
+        name: form.name.value,
+        phone: form.phone.value,
+        city: form.city.value,
+        delivery_address: form.delivery_address.value,
+        delivery_type: form.delivery_type.value,
+        cart_items: cart.map(i => `${i.name} × ${i.quantity}`),
+        total_price: cart.reduce((sum, i) => sum + i.price*i.quantity, 0)
+      };
+
+      try {
+        const res = await fetch('/api/telegram', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+          document.getElementById('success-message').innerHTML = `
+            ✅ Order received successfully!<br>
+            💰 Total: ${data.total_price}<br>
+            🚚 Cash on Delivery (DZD)<br>
+            📞 We will call you shortly to confirm.
+          `;
+          form.style.display = 'none';
+        } else {
+          throw new Error(result.error);
+        }
+      } catch(err) {
+        console.error(err);
+        alert("Submission failed. Please try again or contact us directly.");
+      }
+    });
+  </script>
 </body>
 </html>
