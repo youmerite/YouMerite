@@ -1,176 +1,224 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>You Mérite • Luxury Gift Boxes</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0f0c07;
-      --text: #f5f0e8;
-      --gold: #d4af37;
-      --accent: #a61c23;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You Mérite • Luxury Lingerie & Gift Boxes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f0c07;
+  --text: #f5f0e8;
+  --gold: #d4af37;
+  --accent: #a61c23;
+}
 
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { background: var(--bg); color: var(--text); font-family: 'Playfair Display', serif; line-height: 1.6; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Playfair Display', serif;
+  line-height:1.6;
+  overflow-x:hidden;
+}
 
-    header {
-      height: 70vh;
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
-                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80') center/cover;
-      display: flex; align-items: center; justify-content: center; text-align: center;
-    }
+/* Header */
+header {
+  height:90vh;
+  min-height:600px;
+  background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), url('youmerite.png') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.hero-content { max-width:900px; padding:0 20px; }
+h1 { font-family:'Cinzel', serif; font-size:4rem; font-weight:700; color:var(--gold); letter-spacing:4px; margin-bottom:0.4em; text-shadow:0 4px 20px rgba(212,175,55,0.4);}
+.subtitle { font-size:1.6rem; font-style:italic; opacity:0.9; margin-bottom:1.5rem;}
+.slogan { font-size:1.3rem; color:var(--gold); margin-bottom:2rem;}
+.btn-primary { display:inline-block; background:transparent; border:2px solid var(--gold); color:var(--gold); padding:12px 32px; font-family:'Cinzel', serif; text-decoration:none; transition:0.3s;}
+.btn-primary:hover { background:var(--gold); color:var(--bg); }
 
-    h1 { font-family: 'Cinzel', serif; font-size: 5rem; color: var(--gold); letter-spacing: 5px; text-shadow: 0 4px 20px rgba(212,175,55,0.4); }
+/* Language switch */
+.lang-switch { position:fixed; top:20px; right:20px; z-index:999; }
+.lang-btn { background:transparent; border:1px solid var(--gold); color:var(--gold); padding:6px 12px; margin-left:5px; cursor:pointer; transition:0.3s;}
+.lang-btn.active, .lang-btn:hover { background:var(--gold); color:var(--bg); }
 
-    .cart-icon { position: fixed; top: 20px; right: 30px; font-size: 2rem; color: var(--gold); cursor: pointer; z-index: 999; }
-    .cart-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; justify-content: center; align-items: center; }
-    .cart-content { background: var(--bg); border: 2px solid var(--gold); border-radius: 12px; width: 90%; max-width: 600px; padding: 30px; max-height: 85vh; overflow-y: auto; position: relative; }
-    .close-modal { position: absolute; top: 10px; right: 20px; font-size: 2.5rem; color: var(--gold); cursor: pointer; }
-    .product-card { background: rgba(212,175,55,0.05); border: 1px solid var(--gold); border-radius: 8px; padding: 20px; text-align: center; margin: 40px auto; max-width: 400px; }
-    .btn-primary { background: transparent; border: 2px solid var(--gold); color: var(--gold); padding: 12px 30px; font-size: 1.1rem; cursor: pointer; transition: 0.3s; }
-    .btn-primary:hover { background: var(--gold); color: var(--bg); }
-    #customer-form input, #customer-form textarea, #customer-form select { width: 100%; padding: 12px; margin: 10px 0; background: rgba(255,255,255,0.08); border: 1px solid var(--gold); color: var(--text); border-radius: 6px; font-family: inherit; }
-    #success-message { color: var(--gold); font-size: 1.4rem; text-align: center; margin: 30px 0; }
-    .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--gold); }
-  </style>
+/* Dil bazlı görünürlük */
+[data-lang="en"] .fr, [data-lang="en"] .ar { display:none; }
+[data-lang="fr"] .en, [data-lang="fr"] .ar { display:none; }
+[data-lang="ar"] .en, [data-lang="ar"] .fr { display:none; }
+[data-lang="ar"] body { direction:rtl; text-align:right; }
+
+/* Shop */
+#shop { padding:50px 20px; display:flex; flex-wrap:wrap; gap:20px; justify-content:center;}
+.product-card { background: rgba(212,175,55,0.05); border:1px solid var(--gold); border-radius:8px; padding:20px; text-align:center; width:250px; }
+.product-card img { width:100%; border-radius:6px; margin-bottom:10px; }
+
+/* Cart */
+.cart-icon { position:fixed; top:20px; left:20px; font-size:1.8rem; color:var(--gold); cursor:pointer; z-index:999; }
+.cart-modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:1000; justify-content:center; align-items:center;}
+.cart-content { background:var(--bg); border:2px solid var(--gold); border-radius:12px; width:90%; max-width:500px; padding:30px; max-height:80vh; overflow-y:auto; position:relative;}
+.close-modal { position:absolute; top:10px; right:20px; font-size:2rem; color:var(--gold); cursor:pointer;}
+.cart-item { display:flex; justify-content:space-between; margin-bottom:8px; }
+#customer-form input, #customer-form textarea, #customer-form select { width:100%; margin:5px 0; padding:10px; border-radius:6px; border:1px solid var(--gold); background:rgba(255,255,255,0.08); color:var(--text);}
+#success-message { color:var(--gold); margin-top:20px; font-size:1.1rem; text-align:center; }
+
+/* Footer */
+footer { padding:30px 20px; text-align:center; font-size:1rem; }
+footer a { color:var(--gold); text-decoration:none; margin:0 10px; }
+footer a:hover { text-decoration:underline; }
+
+</style>
 </head>
 <body>
 
-  <!-- Cart Icon -->
-  <div class="cart-icon" id="cart-icon">🛒 <span id="cart-count">0</span></div>
+<!-- Language Switch -->
+<div class="lang-switch">
+  <button class="lang-btn active" data-lang="en">EN</button>
+  <button class="lang-btn" data-lang="fr">FR</button>
+  <button class="lang-btn" data-lang="ar">AR</button>
+</div>
 
-  <header>
-    <div>
-      <h1>You Mérite</h1>
-      <p>Luxury Gift Boxes</p>
-      <p style="font-size:14px; opacity:0.8; margin-top:10px;">🚚 Cash on Delivery • Phone Confirmation Required</p>
-    </div>
-  </header>
+<!-- Cart Icon -->
+<div class="cart-icon" id="cart-icon">🛒 <span id="cart-count">0</span></div>
 
-  <section style="padding: 60px 20px; text-align:center;">
-    <div class="product-card">
-      <h3>Royal Mérite Woman</h3>
-      <p>Luxury gift box</p>
-      <p style="color:var(--gold); font-size:1.3rem;">22,000 DZD</p>
-      <button class="btn-primary add-to-cart" data-name="Royal Mérite Woman" data-price="22000">Add to Cart</button>
-    </div>
-    <!-- Diğer ürünleri buraya ekleyebilirsin -->
-  </section>
-
-  <!-- Cart Modal -->
-  <div class="cart-modal" id="cart-modal">
-    <div class="cart-content">
-      <span class="close-modal" id="close-modal">×</span>
-      <h2>Your Cart</h2>
-      <div id="cart-items"></div>
-      <p style="font-size:1.4rem; margin:20px 0; text-align:right;">Total: <strong id="cart-total">0 DZD</strong></p>
-
-      <!-- Customer Form -->
-      <form id="customer-form">
-        <input type="text" name="name" placeholder="Full Name" required>
-        <input type="tel" name="phone" placeholder="Phone Number" required pattern="[0-9+ ]{8,15}">
-        <input type="text" name="city" placeholder="City" required>
-        <textarea name="delivery_address" placeholder="Full Address" required rows="4"></textarea>
-        <select name="delivery_type" required>
-          <option value="" disabled selected>Delivery to</option>
-          <option value="home">Home</option>
-          <option value="office">Office</option>
-        </select>
-        <p style="font-size:13px; opacity:0.8; margin:15px 0;">🚚 Payment: Cash on Delivery (DZD)</p>
-        <p style="font-size:13px; opacity:0.7;">📞 Orders are confirmed by phone call. Unconfirmed orders will not be shipped.</p>
-        <button type="submit" class="btn-primary" style="width:100%; margin-top:20px;">Submit Order</button>
-      </form>
-
-      <div id="success-message"></div>
-    </div>
+<header>
+  <div class="hero-content">
+    <h1 class="en fr ar">You Mérite</h1>
+    <p class="subtitle en">Luxury Lingerie • Elegant Gift Boxes</p>
+    <p class="subtitle fr">Lingerie de Luxe • Coffrets Cadeaux Élégants</p>
+    <p class="subtitle ar">لانجري فاخر • صناديق هدايا أنيقة</p>
+    <div class="slogan en">You deserve the best ♥</div>
+    <div class="slogan fr">Vous méritez le meilleur ♥</div>
+    <div class="slogan ar">أنت تستحق الأفضل ♥</div>
   </div>
+</header>
 
-  <script>
-    // Cart logic
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+<!-- Shop Section -->
+<section id="shop">
+  <div class="product-card">
+    <img src="images/product1.jpg" alt="Royal Mérite Woman">
+    <h3 class="en">Royal Mérite Woman</h3>
+    <h3 class="fr">Royal Mérite Femme</h3>
+    <h3 class="ar">رويال ميريت وومن</h3>
+    <p class="en">Luxury gift box</p>
+    <p class="fr">Coffret cadeau de luxe</p>
+    <p class="ar">صندوق هدايا فاخر</p>
+    <p style="color:var(--gold); font-weight:bold;">22,000 DZD</p>
+    <button class="btn-primary add-to-cart" data-name-en="Royal Mérite Woman" data-name-fr="Royal Mérite Femme" data-name-ar="رويال ميريت وومن" data-price="22000">Add to Cart</button>
+  </div>
+</section>
 
-    function saveCart() {
-      localStorage.setItem('cart', JSON.stringify(cart));
-      document.getElementById('cart-count').textContent = cart.reduce((s,i)=>s+i.quantity,0);
-    }
+<!-- Cart Modal -->
+<div class="cart-modal" id="cart-modal">
+  <div class="cart-content">
+    <span class="close-modal" id="close-modal">×</span>
+    <h2>Cart</h2>
+    <div id="cart-items"></div>
+    <p>Total: <span id="cart-total">0 DZD</span></p>
 
-    function updateCartDisplay() {
-      const itemsDiv = document.getElementById('cart-items');
-      const totalEl = document.getElementById('cart-total');
-      itemsDiv.innerHTML = '';
-      let total = 0;
-      cart.forEach((item,index)=>{
-        total += item.price*item.quantity;
-        const div = document.createElement('div');
-        div.className='cart-item';
-        div.innerHTML = `<span>${item.name} × ${item.quantity}</span><span>${(item.price*item.quantity).toLocaleString()} DZD</span><button onclick="removeFromCart(${index})">×</button>`;
-        itemsDiv.appendChild(div);
-      });
-      totalEl.textContent = total.toLocaleString()+' DZD';
-    }
+    <form id="customer-form">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <input type="text" name="city" placeholder="City" required>
+      <textarea name="delivery_address" placeholder="Full Address" required rows="3"></textarea>
+      <select name="delivery_type" required>
+        <option value="" disabled selected>Delivery to</option>
+        <option value="home">Home</option>
+        <option value="office">Office</option>
+      </select>
+      <button type="submit" class="btn-primary">Submit Order</button>
+    </form>
 
-    window.addToCart = function(name,price){
-      const found = cart.find(i=>i.name===name);
-      if(found) found.quantity++;
-      else cart.push({name,price:Number(price),quantity:1});
-      saveCart();
-      updateCartDisplay();
-      alert(`${name} added to cart!`);
-    };
+    <div id="success-message"></div>
+  </div>
+</div>
 
-    window.removeFromCart=function(index){cart.splice(index,1); saveCart(); updateCartDisplay();};
+<!-- Footer -->
+<footer>
+  <a href="mailto:shop@youmerite.com">shop@youmerite.com</a>
+  <a href="#" target="_blank">Instagram</a>
+  <a href="#" target="_blank">TikTok</a>
+</footer>
 
-    document.addEventListener('DOMContentLoaded',()=>{
-      // Cart icon
-      document.getElementById('cart-icon').onclick=()=>{document.getElementById('cart-modal').style.display='flex'; updateCartDisplay();};
-      document.getElementById('close-modal').onclick=()=>{document.getElementById('cart-modal').style.display='none';};
-      document.querySelectorAll('.add-to-cart').forEach(btn=>{btn.onclick=()=>addToCart(btn.dataset.name,btn.dataset.price);});
+<script>
+// Language switch
+const langButtons=document.querySelectorAll('.lang-btn');
+const html=document.documentElement;
+langButtons.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const lang=btn.dataset.lang;
+    html.setAttribute('data-lang',lang);
+    html.setAttribute('dir',lang==='ar'?'rtl':'ltr');
+    langButtons.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
 
-      // Form submission to Vercel API
-      document.getElementById('customer-form').addEventListener('submit', async (e)=>{
-        e.preventDefault();
-        const data={
-          name:e.target.name.value,
-          phone:e.target.phone.value,
-          city:e.target.city.value,
-          delivery_address:e.target.delivery_address.value,
-          delivery_type:e.target.delivery_type.value,
-          cart_items:cart.map(i=>`${i.name} × ${i.quantity}`),
-          total_price:document.getElementById('cart-total').textContent
-        };
-        try{
-          const res = await fetch('/api/telegram',{
-            method:'POST',
-            headers:{'Content-Type':'application/json'},
-            body:JSON.stringify(data)
-          });
-          const result = await res.json();
-          if(res.ok){
-            document.getElementById('success-message').innerHTML=`✅ Order received successfully!<br>💰 Total: ${data.total_price}<br>🚚 Cash on Delivery (DZD)<br>📞 We will call you shortly to confirm.`;
-            e.target.style.display='none';
-            cart=[];
-            saveCart();
-            updateCartDisplay();
-            setTimeout(()=>document.getElementById('cart-modal').style.display='none',6000);
-          } else {
-            throw new Error(result.error);
-          }
-        } catch(err){
-          console.error(err);
-          alert('Submission failed. Please try again or contact us directly.');
-        }
-      });
+// Cart logic
+let cart=JSON.parse(localStorage.getItem('cart'))||[];
+function saveCart(){ localStorage.setItem('cart',JSON.stringify(cart)); document.getElementById('cart-count').textContent=cart.reduce((s,i)=>s+i.quantity,0); }
+function updateCartDisplay(){
+  const itemsDiv=document.getElementById('cart-items');
+  const totalEl=document.getElementById('cart-total');
+  itemsDiv.innerHTML=''; let total=0;
+  cart.forEach((item,index)=>{
+    total+=item.price*item.quantity;
+    const div=document.createElement('div');
+    div.className='cart-item';
+    div.innerHTML=`<span>${item.name} × ${item.quantity}</span><span>${(item.price*item.quantity).toLocaleString()} DZD</span><button onclick="removeFromCart(${index})">×</button>`;
+    itemsDiv.appendChild(div);
+  });
+  totalEl.textContent=total.toLocaleString()+' DZD';
+}
+function removeFromCart(index){ cart.splice(index,1); saveCart(); updateCartDisplay(); }
+document.querySelectorAll('.add-to-cart').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const lang=html.getAttribute('data-lang');
+    const name=btn.dataset[`name${lang}`];
+    const price=parseInt(btn.dataset.price);
+    const found=cart.find(i=>i.name===name);
+    if(found) found.quantity++; else cart.push({name,price,quantity:1});
+    saveCart(); updateCartDisplay();
+  });
+});
 
-      // Initial cart display
-      saveCart();
-      updateCartDisplay();
-    });
-  </script>
+// Cart modal
+document.getElementById('cart-icon').onclick=()=>{document.getElementById('cart-modal').style.display='flex'; updateCartDisplay();}
+document.getElementById('close-modal').onclick=()=>{document.getElementById('cart-modal').style.display='none';}
+
+// Form submit
+document.getElementById('customer-form').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const form=e.target;
+  const lang=html.getAttribute('data-lang');
+  const data={
+    language: lang,
+    name: form.name.value,
+    phone: form.phone.value,
+    city: form.city.value,
+    delivery_address: form.delivery_address.value,
+    delivery_type: form.delivery_type.value,
+    cart_items: cart.map(i=>`${i.name} × ${i.quantity}`),
+    total_price: cart.reduce((sum,i)=>sum+i.price*i.quantity,0)
+  };
+  try{
+    const res=await fetch('/api/telegram',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    const result=await res.json();
+    if(res.ok){
+      document.getElementById('success-message').innerHTML=`✅ Order received successfully!<br>Language: ${lang.toUpperCase()}<br>💰 Total: ${data.total_price}<br>🚚 Cash on Delivery (DZD)<br>📞 We will call you shortly to confirm.`;
+      form.style.display='none'; cart=[]; saveCart(); updateCartDisplay();
+      setTimeout(()=>document.getElementById('cart-modal').style.display='none',4000);
+    }else throw new Error(result.error);
+  }catch(err){ console.error(err); alert("Submission failed. Please try again."); }
+});
+
+// Initialize
+saveCart(); updateCartDisplay();
+</script>
 
 </body>
 </html>
