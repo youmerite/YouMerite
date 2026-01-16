@@ -15,7 +15,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Güncel Font Awesome (SRI hatası çözüldü – 6.6.0) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     :root {
@@ -141,7 +142,7 @@
 
     #shop {
       padding: 60px 40px;
-      display: none; /* Başlangıçta gizli */
+      display: none;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 40px;
       max-width: 1400px;
@@ -193,25 +194,25 @@
       position: fixed;
       top: 30px;
       left: 40px;
-      font-size: 3rem;
+      font-size: 3.2rem;
       color: #d4af37 !important;
       cursor: pointer;
       z-index: 9999;
       transition: transform 0.3s ease;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
 
-    .cart-icon i { font-size: 3rem; color: #d4af37 !important; }
+    .cart-icon i { font-size: 3.2rem; color: #d4af37 !important; }
 
     .cart-icon span {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       background: #d4af37;
       color: #0a0603;
       border-radius: 50%;
-      padding: 6px 12px;
-      min-width: 32px;
+      padding: 6px 14px;
+      min-width: 36px;
       text-align: center;
       font-weight: bold;
     }
@@ -244,47 +245,48 @@
       position: absolute;
       top: 15px;
       right: 25px;
-      font-size: 2.8rem;
+      font-size: 3rem;
       color: var(--gold);
       cursor: pointer;
     }
 
     #customer-form input, #customer-form textarea, #customer-form select {
       width: 100%;
-      padding: 12px;
-      margin: 10px 0;
+      padding: 14px;
+      margin: 12px 0;
       background: rgba(248,241,233,0.08);
       border: 1px solid var(--border-gold);
       color: var(--text);
-      border-radius: 6px;
+      border-radius: 8px;
       font-family: inherit;
     }
 
     footer {
-      padding: 60px 40px;
+      padding: 80px 40px;
       text-align: center;
       border-top: 1px solid var(--border-gold);
     }
 
     .social-icons {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
     .social-icons a {
       color: var(--gold);
-      font-size: 3rem;
-      margin: 0 40px;
-      transition: 0.3s;
+      font-size: 4rem; /* Büyük ve net ikonlar */
+      margin: 0 50px;
+      display: inline-block;
+      transition: all 0.3s ease;
     }
 
     .social-icons a:hover {
       color: var(--accent);
-      transform: translateY(-8px);
+      transform: scale(1.2);
     }
 
     .contact-info {
-      margin-top: 20px;
-      font-size: 1.3rem;
+      margin-top: 30px;
+      font-size: 1.4rem;
       opacity: 0.9;
     }
 
@@ -294,9 +296,7 @@
       transition: color 0.3s;
     }
 
-    .contact-info a:hover {
-      color: var(--accent);
-    }
+    .contact-info a:hover { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -413,7 +413,7 @@
     </div>
   </div>
 
-  <!-- Footer – Instagram ve TikTok ikonları net bir şekilde burada -->
+  <!-- Footer – Sosyal ikonlar büyük ve net -->
   <footer>
     <div class="social-icons">
       <a href="https://instagram.com/youmerite" target="_blank" aria-label="Instagram">
@@ -437,10 +437,8 @@
     const categoryBtns = document.querySelectorAll('.category-btn');
     const productCards = document.querySelectorAll('.product-card');
 
-    // Sayfa yüklendiğinde shop gizli
     document.getElementById('shop').style.display = 'none';
 
-    // Dil değişimi + kategori butonlarını güncelle
     langButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const lang = btn.dataset.lang;
@@ -449,7 +447,6 @@
         langButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
-        // Kategori buton metinlerini güncelle
         categoryBtns.forEach(catBtn => {
           const key = `data-${lang}`;
           catBtn.textContent = catBtn.getAttribute(key) || catBtn.getAttribute('data-en');
@@ -460,7 +457,6 @@
       });
     });
 
-    // Kategori seçimi
     categoryBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         categoryBtns.forEach(b => b.classList.remove('active'));
@@ -468,7 +464,6 @@
 
         const category = btn.dataset.category;
 
-        // Shop'u göster
         document.getElementById('shop').style.display = 'grid';
 
         productCards.forEach(card => {
