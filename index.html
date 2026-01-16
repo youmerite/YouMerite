@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>You Mérite • Luxury Gift Boxes</title>
   
+  <!-- Meta Description for SEO (English, French, Arabic) -->
+  <meta name="description" content="Romantic couple gift sets with luxury lingerie, premium underwear, perfume, watch & bracelet. You deserve the best. ♥ Shop now at You Mérite.">
+  <meta name="description" lang="fr" content="Coffrets cadeaux couples romantiques avec lingerie de luxe, sous-vêtements premium, parfum, montre & bracelet. Vous méritez le meilleur. ♥ Boutiquez maintenant.">
+  <meta name="description" lang="ar" content="مجموعات هدايا الأزواج الرومانسية من You Mérite: ملابس داخلية فاخرة بالدانتيل الأحمر، ملابس داخلية سوداء فاخرة، عطر، ساعة وأساور قلب. أنتما تستحقان الأفضل. ♥ تسوق الآن">
+  
   <!-- Google Fonts - Plus élégantes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,9 +22,9 @@
     :root {
       --bg: #0a0603;                /* Noir très profond, luxury */
       --text: #f8f1e9;              /* Crème doux */
-      --gold: #d4af37;              /* Or classique luxury */
+      --gold: #d4af37;              /* Or classique */
       --gold-dark: #b8972e;
-      --accent: #800020;            /* Rouge bordeaux profond, sophistiqué */
+      --accent: #800020;            /* Rouge bordeaux profond */
       --card-bg: rgba(212,175,55,0.04);
       --border-gold: rgba(212,175,55,0.25);
     }
@@ -83,6 +88,7 @@
       padding: 14px 40px;
       font-family: 'Cinzel', serif;
       font-size: 1.1rem;
+      font-weight: 400;
       letter-spacing: 2px;
       text-decoration: none;
       transition: all 0.4s ease;
@@ -123,7 +129,7 @@
     /* Visibility */
     [data-lang="en"] .fr, [data-lang="en"] .ar { display:none; }
     [data-lang="fr"] .en, [data-lang="fr"] .ar { display:none; }
-    [data-lang="ar"] .en, [data-lang="ar"] .fr { display:none; }
+    [data-lang="ar"] .en, [data-lang="fr"] .fr { display:none; }
     [data-lang="ar"] body { direction:rtl; text-align:right; }
 
     /* Shop */
@@ -241,7 +247,7 @@
       color: var(--gold);
       text-decoration: none;
       margin: 0 20px;
-      font-size: 1.6rem;
+      font-size: 0 1.6rem;
       transition: 0.3s;
     }
 
