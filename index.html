@@ -42,7 +42,6 @@
     header {
       height: 100vh;
       min-height: 700px;
-      /* Daha hafif overlay ile arka plan daha aydınlık ve net olacak */
       background: linear-gradient(rgba(10,6,3,0.65), rgba(10,6,3,0.75)),
                   url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat fixed;
       display: flex;
@@ -98,7 +97,6 @@
       box-shadow: 0 10px 30px rgba(212,175,55,0.35);
     }
 
-    /* Language switch */
     .lang-switch {
       position: fixed;
       top: 30px;
@@ -119,13 +117,11 @@
 
     .lang-btn.active, .lang-btn:hover { background: var(--gold); color: var(--bg); }
 
-    /* Visibility */
     [data-lang="en"] .fr, [data-lang="en"] .ar { display:none; }
     [data-lang="fr"] .en, [data-lang="fr"] .ar { display:none; }
     [data-lang="ar"] .en, [data-lang="ar"] .fr { display:none; }
     [data-lang="ar"] body { direction: rtl; text-align: right; }
 
-    /* Shop */
     #shop {
       padding: 120px 40px;
       display: grid;
@@ -176,13 +172,12 @@
 
     .price { color: var(--gold); font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; }
 
-    /* Cart Icon – Daha görünür ve net */
     .cart-icon {
       position: fixed;
       top: 30px;
       left: 40px;
-      font-size: 2.8rem;
-      color: #d4af37 !important; /* Kontrastı artırdık */
+      font-size: 3rem;
+      color: #d4af37 !important;
       cursor: pointer;
       z-index: 9999;
       transition: transform 0.3s ease;
@@ -192,24 +187,23 @@
     }
 
     .cart-icon i {
-      font-size: 2.8rem;
+      font-size: 3rem;
       color: #d4af37 !important;
     }
 
     .cart-icon span {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       background: #d4af37;
       color: #0a0603;
       border-radius: 50%;
-      padding: 4px 10px;
-      min-width: 28px;
+      padding: 6px 12px;
+      min-width: 32px;
       text-align: center;
       font-weight: bold;
     }
 
     .cart-icon:hover { transform: scale(1.15); }
 
-    /* Cart Modal */
     .cart-modal {
       display: none;
       position: fixed;
@@ -241,7 +235,6 @@
       cursor: pointer;
     }
 
-    /* Form */
     #customer-form input, #customer-form textarea, #customer-form select {
       width: 100%;
       padding: 12px;
@@ -253,7 +246,6 @@
       font-family: inherit;
     }
 
-    /* Footer – Logo yok, sosyal ikonlar geri geldi */
     footer {
       padding: 60px 40px;
       text-align: center;
@@ -262,8 +254,8 @@
 
     .social-icons a {
       color: var(--gold);
-      font-size: 2.2rem;
-      margin: 0 25px;
+      font-size: 2.5rem;
+      margin: 0 30px;
       transition: 0.3s;
     }
 
@@ -272,23 +264,31 @@
       transform: translateY(-5px);
     }
 
-    .cod-note {
+    .contact-info {
       margin-top: 20px;
-      font-size: 1.1rem;
-      opacity: 0.8;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .contact-info a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact-info a:hover {
+      color: var(--accent);
     }
   </style>
 </head>
 <body>
 
-  <!-- Language Switch -->
   <div class="lang-switch">
     <button class="lang-btn active" data-lang="en">EN</button>
     <button class="lang-btn" data-lang="fr">FR</button>
     <button class="lang-btn" data-lang="ar">AR</button>
   </div>
 
-  <!-- Cart Icon -->
   <div class="cart-icon" id="cart-icon">
     <i class="fa-solid fa-cart-shopping"></i>
     <span id="cart-count">0</span>
@@ -310,9 +310,7 @@
     </div>
   </header>
 
-  <!-- Shop Section (ürünler güzel oturmuş haliyle devam) -->
   <section id="shop">
-    <!-- Product 1 -->
     <div class="product-card">
       <img src="/images/royal-merite-woman-open.jpg" loading="lazy" alt="Royal Mérite Woman – Luxury red lace lingerie set with perfume, gold bracelet and elegant packaging">
       <h3 class="en">Royal Mérite Woman</h3>
@@ -320,18 +318,13 @@
       <h3 class="ar">رويال ميريت نساء</h3>
       <p class="en fr ar">Luxury Gift Experience</p>
       <div class="price">22,000 DZD</div>
-      <button class="btn-primary add-to-cart"
-              data-name-en="Royal Mérite Woman"
-              data-name-fr="Royal Mérite Femme"
-              data-name-ar="رويال ميريت نساء"
-              data-price="22000">
+      <button class="btn-primary add-to-cart" data-name-en="Royal Mérite Woman" data-name-fr="Royal Mérite Femme" data-name-ar="رويال ميريت نساء" data-price="22000">
         <span class="en">Add to Cart</span>
         <span class="fr">Ajouter au panier</span>
         <span class="ar">أضف إلى السلة</span>
       </button>
     </div>
 
-    <!-- Product 2 -->
     <div class="product-card">
       <img src="/images/royal-merite-man-open.jpg" loading="lazy" alt="Royal Mérite Man – Premium men's watch, bracelet, perfume and luxury underwear gift set">
       <h3 class="en">Royal Mérite Man</h3>
@@ -339,18 +332,13 @@
       <h3 class="ar">رويال ميريت رجال</h3>
       <p class="en fr ar">Luxury Gift Experience</p>
       <div class="price">25,000 DZD</div>
-      <button class="btn-primary add-to-cart"
-              data-name-en="Royal Mérite Man"
-              data-name-fr="Royal Mérite Homme"
-              data-name-ar="رويال ميريت رجال"
-              data-price="25000">
+      <button class="btn-primary add-to-cart" data-name-en="Royal Mérite Man" data-name-fr="Royal Mérite Homme" data-name-ar="رويال ميريت رجال" data-price="25000">
         <span class="en">Add to Cart</span>
         <span class="fr">Ajouter au panier</span>
         <span class="ar">أضف إلى السلة</span>
       </button>
     </div>
 
-    <!-- Product 3 -->
     <div class="product-card">
       <img src="/images/royal-merite-couple.jpeg" loading="lazy" alt="Royal Mérite Deluxe Couple – Luxury couple gift box with matching lingerie, perfume, watch and bracelets">
       <h3 class="en">Royal Mérite Deluxe</h3>
@@ -358,11 +346,7 @@
       <h3 class="ar">رويال ميريت ديلوكس</h3>
       <p class="en fr ar">Luxury Gift Experience</p>
       <div class="price">30,000 DZD</div>
-      <button class="btn-primary add-to-cart"
-              data-name-en="Royal Mérite Deluxe"
-              data-name-fr="Royal Mérite Deluxe"
-              data-name-ar="رويال ميريت ديلوكس"
-              data-price="30000">
+      <button class="btn-primary add-to-cart" data-name-en="Royal Mérite Deluxe" data-name-fr="Royal Mérite Deluxe" data-name-ar="رويال ميريت ديلوكس" data-price="30000">
         <span class="en">Add to Cart</span>
         <span class="fr">Ajouter au panier</span>
         <span class="ar">أضف إلى السلة</span>
@@ -370,7 +354,6 @@
     </div>
   </section>
 
-  <!-- Cart Modal -->
   <div class="cart-modal" id="cart-modal">
     <div class="cart-content">
       <span class="close-modal" id="close-modal">×</span>
@@ -401,13 +384,17 @@
     </div>
   </div>
 
-  <!-- Footer – Logo yok, sosyal ikonlar aktif -->
   <footer>
     <div class="social-icons">
-      <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="#" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://instagram.com/youmerite" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://tiktok.com/@youmerite" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
     </div>
-    <div class="cod-note">shop@youmerite.com • Paiement à la livraison partout en Algérie ♥</div>
+
+    <div class="contact-info">
+      <a href="mailto:shop@youmerite.com">shop@youmerite.com</a>
+      <br>
+      Paiement à la livraison partout en Algérie ♥
+    </div>
   </footer>
 
   <script>
