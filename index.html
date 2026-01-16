@@ -549,7 +549,7 @@
       document.getElementById('cart-modal').style.display = 'none';
     };
 
-    // DÜZELTİLMİŞ TELEGRAM GÖNDERİM KODU (process.env kaldırıldı, /api/telegram'e istek atılıyor)
+    // Telegram Gönderimi (dil bazlı başarı ve hata mesajları)
     document.getElementById('customer-form').addEventListener('submit', async e => {
       e.preventDefault();
 
@@ -582,14 +582,33 @@
 
         const data = await response.json();
 
+        const lang = html.getAttribute('data-lang') || 'en';
+        const successMessages = {
+          en: "Order sent to Telegram! We'll get back to you soon. ♥",
+          fr: "Commande envoyée sur Telegram ! Nous vous contacterons bientôt. ♥",
+          ar: "تم إرسال الطلب إلى تليجرام! سنعود إليك قريباً. ♥"
+        };
+
+        const errorMessages = {
+          en: "Order saved but could not be sent to Telegram. Please contact us on WhatsApp. ♥",
+          fr: "Commande enregistrée mais non envoyée sur Telegram. Veuillez nous contacter sur WhatsApp. ♥",
+          ar: "تم حفظ الطلب ولكن لم يتم إرساله إلى تليجرام. يرجى التواصل معنا عبر واتساب. ♥"
+        };
+
         if (response.ok && data.success) {
-          document.getElementById('success-message').innerHTML = '<p style="color:#d4af37; margin-top:20px;">Sipariş Telegram\'a gönderildi! En kısa sürede dönüş yapacağız. ♥</p>';
+          document.getElementById('success-message').innerHTML = `<p style="color:#d4af37; margin-top:20px;">${successMessages[lang]}</p>`;
         } else {
           throw new Error(data.error || 'Gönderim başarısız');
         }
       } catch (error) {
         console.error('Sipariş gönderme hatası:', error);
-        document.getElementById('success-message').innerHTML = '<p style="color:#ff6b6b; margin-top:20px;">Sipariş kaydedildi ama Telegram\'a gönderilemedi. Lütfen WhatsApp\'tan bize ulaşın. ♥</p>';
+        const lang = html.getAttribute('data-lang') || 'en';
+        const errorMessages = {
+          en: "Order saved but could not be sent to Telegram. Please contact us on WhatsApp. ♥",
+          fr: "Commande enregistrée mais non envoyée sur Telegram. Veuillez nous contacter sur WhatsApp. ♥",
+          ar: "تم حفظ الطلب ولكن لم يتم إرساله إلى تليجرام. يرجى التواصل معنا عبر واتساب. ♥"
+        };
+        document.getElementById('success-message').innerHTML = `<p style="color:#ff6b6b; margin-top:20px;">${errorMessages[lang]}</p>`;
       }
 
       cart = [];
