@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>You Mérite • Luxury Gift Boxes</title>
 
-  <!-- Primary meta description -->
+  <!-- Primary meta description (English as default) -->
   <meta name="description" content="Romantic couple gift sets with luxury lingerie, premium underwear, perfume, watch & bracelet. You deserve the best. ♥ Shop now at You Mérite.">
 
   <!-- Multilingual SEO -->
@@ -13,12 +13,12 @@
   <link rel="alternate" hreflang="fr" href="https://youmerite.com/?lang=fr">
   <link rel="alternate" hreflang="ar" href="https://youmerite.com/?lang=ar">
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts - Luxury serif fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome -->
+  <!-- Font Awesome for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
@@ -39,16 +39,22 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+      font-family: 'Playfair Display', serif;
       line-height: 1.7;
       overflow-x: hidden;
     }
 
+    /* DARK LUXURY HEADER - Modern villa exterior with heavy dark overlay */
     header {
       height: 100vh;
       min-height: 700px;
-      background: linear-gradient(rgba(10,6,3,0.92), rgba(10,6,3,0.97)),
-                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat fixed;
+      /* User's edited dark villa image - çok dark modern villa terrace gece */
+      background: 
+        /* Extra heavy dark overlay for luxury mystery */
+        radial-gradient(circle at 30% 20%, rgba(10,6,3,0.95) 0%, rgba(10,6,3,0.98) 50%, rgba(10,6,3,0.99) 100%),
+        /* User's specific dark villa image */
+        linear-gradient(135deg, rgba(10,6,3,0.92) 0%, rgba(128,0,32,0.3) 100%), /* Bordeaux accent */
+        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat fixed;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -56,232 +62,485 @@
       position: relative;
     }
 
-    .logo-container {
-      margin-bottom: 1.5rem;
-    }
-
-    .logo {
-      max-width: 220px;
-      height: auto;
-      filter: drop-shadow(0 8px 25px rgba(212,175,55,0.4));
-      transition: transform 0.5s ease, filter 0.5s ease;
-    }
-
-    .logo:hover {
-      transform: scale(1.08);
-      filter: drop-shadow(0 12px 35px rgba(212,175,55,0.6));
+    /* Extra dark overlay particles/glow effect */
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(212,175,55,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(212,175,55,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(128,0,32,0.1) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 1;
     }
 
     .hero-content {
       max-width: 1000px;
       padding: 0 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo-container {
+      margin-bottom: 1.5rem;
+    }
+
+    .logo {
+      max-width: 240px;
+      height: auto;
+      filter: drop-shadow(0 12px 40px rgba(212,175,55,0.4)) brightness(1.1);
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .logo:hover {
+      transform: scale(1.1) rotate(2deg);
+      filter: drop-shadow(0 20px 60px rgba(212,175,55,0.6)) brightness(1.2);
     }
 
     h1 {
       font-family: 'Cinzel', serif;
-      font-size: 5.5rem;
+      font-size: clamp(4rem, 8vw, 6.5rem);
       font-weight: 700;
-      color: var(--gold);
-      letter-spacing: 8px;
-      margin-bottom: 0.3em;
-      text-shadow: 0 6px 30px rgba(0,0,0,0.8);
+      background: linear-gradient(135deg, var(--gold) 0%, #f8d55a 50%, var(--gold-dark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5em;
+      text-shadow: 0 8px 40px rgba(212,175,55,0.5), 0 0 60px rgba(212,175,55,0.2);
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { filter: drop-shadow(0 8px 40px rgba(212,175,55,0.5)); }
+      to { filter: drop-shadow(0 12px 60px rgba(212,175,55,0.7)); }
     }
 
     .subtitle {
-      font-size: 1.8rem;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
       font-style: italic;
-      opacity: 0.92;
-      margin-bottom: 1.8rem;
-      letter-spacing: 1px;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.7);
+      opacity: 0.95;
+      margin-bottom: 2rem;
+      letter-spacing: 0.02em;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.8);
     }
 
     .slogan {
-      font-size: 1.5rem;
-      color: var(--gold);
-      margin-bottom: 2.5rem;
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 3rem;
       font-weight: 500;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.7);
+      text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+      animation: pulse 4s ease-in-out infinite;
     }
 
+    @keyframes pulse {
+      0%, 100% { opacity: 0.95; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.02); }
+    }
+
+    /* Luxury Buttons */
     .btn-primary {
       display: inline-block;
       background: transparent;
-      border: 2px solid var(--gold);
+      border: 2px solid transparent;
+      background: linear-gradient(var(--bg), var(--bg)) padding-box,
+                  linear-gradient(135deg, var(--gold), var(--gold-dark)) border-box;
       color: var(--gold);
-      padding: 14px 40px;
+      padding: 16px 48px;
       font-family: 'Cinzel', serif;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 400;
       letter-spacing: 2px;
       text-decoration: none;
       cursor: pointer;
-      transition: all 0.4s ease;
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
     }
 
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212,175,55,0.2), transparent);
+      transition: left 0.6s;
+    }
+
+    .btn-primary:hover::before { left: 100%; }
     .btn-primary:hover {
-      background: var(--gold);
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
       color: var(--bg);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(212,175,55,0.35);
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 20px 60px rgba(212,175,55,0.4);
+      border-color: var(--gold);
     }
 
-    /* Language switch */
+    /* Language Switch - Fixed luxury position */
     .lang-switch {
       position: fixed;
-      top: 30px;
-      right: 40px;
+      top: 35px;
+      right: 50px;
       z-index: 9999;
+      display: flex;
+      gap: 8px;
     }
 
     .lang-btn {
-      background: transparent;
-      border: 1px solid var(--gold);
+      background: rgba(10,6,3,0.8);
+      border: 1.5px solid var(--border-gold);
       color: var(--gold);
-      padding: 8px 14px;
-      margin-left: 8px;
+      padding: 10px 16px;
       cursor: pointer;
-      transition: 0.4s;
-      font-family: 'Playfair Display', serif;
+      transition: all 0.4s ease;
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      backdrop-filter: blur(10px);
+      border-radius: 4px;
     }
 
-    .lang-btn.active, .lang-btn:hover { background: var(--gold); color: var(--bg); }
+    .lang-btn.active, .lang-btn:hover {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--bg);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(212,175,55,0.3);
+    }
 
-    /* Visibility rules */
-    [data-lang="en"] .fr, [data-lang="en"] .ar { display:none; }
-    [data-lang="fr"] .en, [data-lang="fr"] .ar { display:none; }
-    [data-lang="ar"] .en, [data-lang="ar"] .fr { display:none; }
+    /* Language visibility */
+    [data-lang="en"] .fr, [data-lang="en"] .ar { display: none !important; }
+    [data-lang="fr"] .en, [data-lang="fr"] .ar { display: none !important; }
+    [data-lang="ar"] .en, [data-lang="ar"] .fr { display: none !important; }
     [data-lang="ar"] body { direction: rtl; text-align: right; }
 
-    /* Shop */
+    /* Cart Icon - Luxury floating */
+    .cart-icon {
+      position: fixed;
+      top: 35px;
+      left: 50px;
+      font-size: 2.4rem;
+      color: var(--gold);
+      cursor: pointer;
+      z-index: 9999;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      background: rgba(10,6,3,0.8);
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(15px);
+      border: 2px solid var(--border-gold);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+
+    .cart-icon:hover {
+      transform: scale(1.15) rotate(10deg);
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--bg);
+      box-shadow: 0 20px 60px rgba(212,175,55,0.4);
+    }
+
+    #cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: var(--accent);
+      color: var(--text);
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(128,0,32,0.5);
+    }
+
+    /* Shop Section */
     #shop {
-      padding: 120px 40px;
+      padding: 140px 40px 100px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 50px;
       max-width: 1400px;
       margin: 0 auto;
     }
 
     .product-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-gold);
-      border-radius: 12px;
-      padding: 30px;
+      background: linear-gradient(145deg, var(--card-bg), rgba(10,6,3,0.95));
+      border: 1.5px solid var(--border-gold);
+      border-radius: 20px;
+      padding: 40px 30px;
       text-align: center;
-      transition: all 0.5s ease;
-      backdrop-filter: blur(4px);
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
     }
 
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, transparent, var(--gold), var(--gold-dark), var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.6s;
+    }
+
+    .product-card:hover::before { opacity: 1; }
+
     .product-card:hover {
-      transform: translateY(-12px);
+      transform: translateY(-20px) rotateX(5deg) rotateY(5deg);
       border-color: var(--gold);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      box-shadow: 
+        0 40px 100px rgba(0,0,0,0.6),
+        0 0 60px rgba(212,175,55,0.2);
     }
 
     .product-card img {
       width: 100%;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      transition: transform 0.6s ease;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 16px;
+      margin-bottom: 25px;
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      filter: drop-shadow(0 8px 25px rgba(0,0,0,0.5));
+      border: 1px solid var(--border-gold);
     }
 
-    .product-card:hover img { transform: scale(1.05); }
+    .product-card:hover img {
+      transform: scale(1.08) rotate(1deg);
+      filter: drop-shadow(0 15px 40px rgba(212,175,55,0.2)) brightness(1.1);
+    }
 
     .product-card h3 {
       font-family: 'Cinzel', serif;
-      font-size: 1.6rem;
-      color: var(--gold);
-      margin-bottom: 10px;
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
       letter-spacing: 1px;
+      font-weight: 500;
     }
 
-    .product-card p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 15px; }
+    .product-card p {
+      font-size: 1.15rem;
+      opacity: 0.9;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
 
-    .price { color: var(--gold); font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; }
-
-    /* Cart */
-    .cart-icon {
-      position: fixed;
-      top: 30px;
-      left: 40px;
-      font-size: 2.2rem;
+    .price {
       color: var(--gold);
-      cursor: pointer;
-      z-index: 9999;
-      transition: transform 0.3s;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 25px;
+      text-shadow: 0 4px 15px rgba(212,175,55,0.3);
     }
 
-    .cart-icon:hover { transform: scale(1.15); }
-
+    /* Cart Modal - Luxury popup */
     .cart-modal {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(10,6,3,0.92);
+      background: rgba(10,6,3,0.96);
+      backdrop-filter: blur(30px);
       z-index: 10000;
       justify-content: center;
       align-items: center;
+      animation: fadeIn 0.4s ease-out;
     }
 
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
     .cart-content {
-      background: var(--bg);
-      border: 2px solid var(--gold);
-      border-radius: 16px;
+      background: linear-gradient(145deg, var(--bg), rgba(10,6,3,0.98));
+      border: 2px solid var(--border-gold);
+      border-radius: 24px;
       width: 90%;
-      max-width: 600px;
-      padding: 40px;
-      max-height: 88vh;
+      max-width: 650px;
+      padding: 50px;
+      max-height: 90vh;
       overflow-y: auto;
       position: relative;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.8), 0 0 80px rgba(212,175,55,0.1);
     }
 
     .close-modal {
       position: absolute;
-      top: 15px;
-      right: 25px;
-      font-size: 2.8rem;
+      top: 20px;
+      right: 30px;
+      font-size: 3rem;
       color: var(--gold);
       cursor: pointer;
+      transition: all 0.3s;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
     }
 
-    /* Form */
-    #customer-form input, #customer-form textarea, #customer-form select {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      background: rgba(248,241,233,0.08);
-      border: 1px solid var(--border-gold);
+    .close-modal:hover {
+      background: var(--accent);
       color: var(--text);
-      border-radius: 6px;
-      font-family: inherit;
+      transform: rotate(90deg) scale(1.1);
     }
 
-    /* Footer */
-    footer {
-      padding: 60px 40px;
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border-gold);
+      opacity: 0.9;
+      transition: opacity 0.3s;
+    }
+
+    .cart-item:hover { opacity: 1; }
+
+    /* Form Styling */
+    #customer-form input, 
+    #customer-form textarea, 
+    #customer-form select {
+      width: 100%;
+      padding: 16px 20px;
+      margin: 12px 0;
+      background: rgba(248,241,233,0.06);
+      border: 1.5px solid var(--border-gold);
+      color: var(--text);
+      border-radius: 12px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    #customer-form input:focus,
+    #customer-form textarea:focus,
+    #customer-form select:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 20px rgba(212,175,55,0.2);
+      background: rgba(248,241,233,0.1);
+    }
+
+    #customer-form input::placeholder { color: rgba(248,241,233,0.6); }
+
+    /* Success Message */
+    #success-message {
+      margin-top: 20px;
+      padding: 20px;
+      background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(128,0,32,0.1));
+      border: 1px solid var(--border-gold);
+      border-radius: 12px;
       text-align: center;
-      font-size: 1.1rem;
-      border-top: 1px solid var(--border-gold);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s;
+    }
+
+    #success-message.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Footer - Luxury branding */
+    footer {
+      padding: 80px 40px 40px;
+      text-align: center;
+      border-top: 2px solid var(--border-gold);
+      background: linear-gradient(180deg, rgba(10,6,3,0.8) 0%, var(--bg) 100%);
+      backdrop-filter: blur(20px);
     }
 
     .footer-logo {
-      max-width: 140px;
+      max-width: 160px;
       height: auto;
-      margin-bottom: 1.2rem;
-      opacity: 0.9;
-      filter: drop-shadow(0 4px 12px rgba(212,175,55,0.2));
+      margin-bottom: 2rem;
+      opacity: 0.95;
+      filter: drop-shadow(0 8px 25px rgba(212,175,55,0.3));
+      transition: all 0.4s;
+    }
+
+    .footer-logo:hover { filter: drop-shadow(0 12px 35px rgba(212,175,55,0.5)); }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
     }
 
     footer a {
       color: var(--gold);
       text-decoration: none;
-      margin: 0 20px;
-      font-size: 1.6rem;
-      transition: 0.3s;
+      font-size: 1.1rem;
+      font-family: 'Playfair Display', serif;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      padding: 8px 16px;
     }
 
-    footer a:hover { color: var(--accent); transform: translateY(-3px); }
+    footer a:hover {
+      color: var(--accent);
+      transform: translateY(-4px);
+      text-shadow: 0 4px 15px rgba(212,175,55,0.5);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .social-icons a {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid var(--border-gold);
+      background: rgba(10,6,3,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      backdrop-filter: blur(15px);
+    }
+
+    .social-icons a:hover {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--bg);
+      transform: translateY(-6px) scale(1.1);
+      box-shadow: 0 15px 40px rgba(212,175,55,0.4);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .lang-switch { top: 20px; right: 20px; flex-direction: column; }
+      .cart-icon { top: 20px; left: 20px; width: 60px; height: 60px; font-size: 2rem; }
+      #shop { padding: 100px 20px 80px; grid-template-columns: 1fr; gap: 30px; }
+      .product-card { padding: 30px 20px; }
+      .cart-content { padding: 30px 20px; margin: 20px; }
+      .footer-links { gap: 20px; }
+    }
+
+    /* RTL fixes */
+    [data-lang="ar"] .cart-icon { left: auto; right: 50px; }
+    [data-lang="ar"] .lang-switch { left: 50px; right: auto; }
   </style>
 </head>
 <body>
@@ -293,115 +552,143 @@
     <button class="lang-btn" data-lang="ar">AR</button>
   </div>
 
-  <!-- Cart Icon -->
-  <div class="cart-icon" id="cart-icon">🛒 <span id="cart-count">0</span></div>
+  <!-- Luxury Cart Icon -->
+  <div class="cart-icon" id="cart-icon">
+    <i class="fas fa-shopping-bag"></i>
+    <span id="cart-count">0</span>
+  </div>
 
+  <!-- Hero Header -->
   <header>
     <div class="hero-content">
       <div class="logo-container">
-        <img src="/images/youmerite.png" alt="You Mérite Logo" class="logo" loading="lazy">
+        <img src="/images/youmerite.png" alt="You Mérite - Luxury Lingerie & Gift Boxes" class="logo" loading="lazy">
       </div>
       <h1>You Mérite</h1>
-      <p class="subtitle en">Luxury Lingerie • Exquisite Gift Boxes</p>
-      <p class="subtitle fr">Lingerie de Luxe • Coffrets Cadeaux d’Exception</p>
-      <p class="subtitle ar">لانجري فاخر • صناديق هدايا راقية</p>
-
-      <div class="slogan en">You deserve the finest ♥</div>
-      <div class="slogan fr">Vous méritez le summum ♥</div>
-      <div class="slogan ar">أنتما تستحقان الأفضل ♥</div>
+      <p class="subtitle en">Luxury Lingerie • Exquisite Gift Boxes for Couples</p>
+      <p class="subtitle fr">Lingerie de Luxe • Coffrets Cadeaux d'Exception pour Couples</p>
+      <p class="subtitle ar">لانجري فاخر • صناديق هدايا استثنائية للأزواج</p>
+      <div class="slogan en">You deserve the finest intimate experience ♥</div>
+      <div class="slogan fr">Vous méritez l'expérience intime la plus raffinée ♥</div>
+      <div class="slogan ar">أنتما تستحقان التجربة الحميمة الأرقى ♥</div>
+      <!-- CTA Button -->
+      <a href="#shop" class="btn-primary">
+        <span class="en">Discover Luxury</span>
+        <span class="fr">Découvrez le Luxe</span>
+        <span class="ar">اكتشفوا الفخامة</span>
+      </a>
     </div>
   </header>
 
-  <!-- Shop Section -->
+  <!-- Luxury Shop Section -->
   <section id="shop">
-    <!-- Product 1 -->
+    <!-- Royal Mérite Woman -->
     <div class="product-card">
-      <img src="/images/royal-merite-woman-open.jpg" loading="lazy" alt="Royal Mérite Woman – Luxury red lace lingerie set">
+      <img src="/images/royal-merite-woman-open.jpg" loading="lazy" 
+           alt="Royal Mérite Woman - Red lace luxury lingerie set with perfume, gold bracelet, premium gift box">
       <h3 class="en">Royal Mérite Woman</h3>
       <h3 class="fr">Royal Mérite Femme</h3>
-      <h3 class="ar">رويال ميريت نساء</h3>
-      <p class="en">Luxury Gift Experience</p>
-      <p class="fr">Expérience Cadeau de Luxe</p>
-      <p class="ar">تجربة هدية فاخرة</p>
+      <h3 class="ar">رويال ميريت وومن</h3>
+      <p class="en">Red lace lingerie, premium perfume, gold heart bracelet in luxury box</p>
+      <p class="fr">Lingerie dentelle rouge, parfum premium, bracelet cœur or dans coffret luxe</p>
+      <p class="ar">لانجري دانتيل أحمر، عطر فاخر، سوار قلب ذهبي في صندوق فاخر</p>
       <div class="price">22,000 DZD</div>
       <button class="btn-primary add-to-cart"
-              data-name-en="Royal Mérite Woman"
+              data-name-en="Royal Mérite Woman" 
               data-name-fr="Royal Mérite Femme"
-              data-name-ar="رويال ميريت نساء"
+              data-name-ar="رويال ميريت وومن"
               data-price="22000">
         <span class="en">Add to Cart</span>
-        <span class="fr">Ajouter au panier</span>
+        <span class="fr">Ajouter au Panier</span>
         <span class="ar">أضف إلى السلة</span>
       </button>
     </div>
 
-    <!-- Product 2 -->
+    <!-- Royal Mérite Man -->
     <div class="product-card">
-      <img src="/images/royal-merite-man-open.jpg" loading="lazy" alt="Royal Mérite Man – Premium men's luxury gift set">
+      <img src="/images/royal-merite-man-open.jpg" loading="lazy" 
+           alt="Royal Mérite Homme - Premium men's watch, gold bracelet, luxury underwear & perfume gift set">
       <h3 class="en">Royal Mérite Man</h3>
       <h3 class="fr">Royal Mérite Homme</h3>
-      <h3 class="ar">رويال ميريت رجال</h3>
-      <p class="en">Luxury Gift Experience</p>
-      <p class="fr">Expérience Cadeau de Luxe</p>
-      <p class="ar">تجربة هدية فاخرة</p>
+      <h3 class="ar">رويال ميريت هوم</h3>
+      <p class="en">Premium watch, gold bracelet, luxury underwear & signature perfume</p>
+      <p class="fr">Montre premium, bracelet or, sous-vêtements luxe & parfum signature</p>
+      <p class="ar">ساعة فاخرة، سوار ذهبي، ملابس داخلية راقية وعطر مميز</p>
       <div class="price">25,000 DZD</div>
       <button class="btn-primary add-to-cart"
-              data-name-en="Royal Mérite Man"
+              data-name-en="Royal Mérite Man" 
               data-name-fr="Royal Mérite Homme"
-              data-name-ar="رويال ميريت رجال"
+              data-name-ar="رويال ميريت هوم"
               data-price="25000">
         <span class="en">Add to Cart</span>
-        <span class="fr">Ajouter au panier</span>
+        <span class="fr">Ajouter au Panier</span>
         <span class="ar">أضف إلى السلة</span>
       </button>
     </div>
 
-    <!-- Product 3 -->
+    <!-- Royal Mérite Deluxe Couple -->
     <div class="product-card">
-      <img src="/images/royal-merite-couple.jpeg" loading="lazy" alt="Royal Mérite Deluxe Couple – Luxury couple gift box">
+      <img src="/images/royal-merite-couple.jpeg" loading="lazy" 
+           alt="Royal Mérite Deluxe Couple - Matching luxury lingerie sets, perfumes, watch & bracelets gift box">
       <h3 class="en">Royal Mérite Deluxe</h3>
       <h3 class="fr">Royal Mérite Deluxe</h3>
       <h3 class="ar">رويال ميريت ديلوكس</h3>
-      <p class="en">Luxury Gift Experience</p>
-      <p class="fr">Expérience Cadeau de Luxe</p>
-      <p class="ar">تجربة هدية فاخرة</p>
+      <p class="en">Ultimate couple set: matching lingerie, dual perfumes, watch & bracelets</p>
+      <p class="fr">Coffret ultime couple: lingerie assortie, parfums duo, montre & bracelets</p>
+      <p class="ar">مجموعة الأزواج النهائية: لانجري متطابق، عطور ثنائية، ساعة وأساور</p>
       <div class="price">30,000 DZD</div>
       <button class="btn-primary add-to-cart"
-              data-name-en="Royal Mérite Deluxe"
+              data-name-en="Royal Mérite Deluxe" 
               data-name-fr="Royal Mérite Deluxe"
               data-name-ar="رويال ميريت ديلوكس"
               data-price="30000">
         <span class="en">Add to Cart</span>
-        <span class="fr">Ajouter au panier</span>
+        <span class="fr">Ajouter au Panier</span>
         <span class="ar">أضف إلى السلة</span>
       </button>
     </div>
   </section>
 
-  <!-- Cart Modal -->
+  <!-- Luxury Cart Modal -->
   <div class="cart-modal" id="cart-modal">
     <div class="cart-content">
-      <span class="close-modal" id="close-modal">×</span>
-      <h2 class="en">Your Cart</h2>
-      <h2 class="fr">Votre Panier</h2>
-      <h2 class="ar">سلة التسوق</h2>
+      <span class="close-modal" id="close-modal">&times;</span>
+      <h2 class="en">Your Luxury Cart</h2>
+      <h2 class="fr">Votre Panier de Luxe</h2>
+      <h2 class="ar">سلة التسوق الفاخرة</h2>
       <div id="cart-items"></div>
-      <p>Total: <span id="cart-total">0 DZD</span></p>
+      <div style="margin: 30px 0; padding: 20px; background: rgba(212,175,55,0.05); border-radius: 12px; border: 1px solid var(--border-gold);">
+        <p style="font-size: 1.4rem; font-weight: 500; margin: 0;">
+          <span class="en">Total:</span>
+          <span class="fr">Total:</span>
+          <span class="ar">المجموع:</span>
+          <span id="cart-total" style="color: var(--gold); font-size: 1.8rem; font-family: 'Cinzel', serif;">0 DZD</span>
+        </p>
+      </div>
 
       <form id="customer-form">
         <input type="text" name="name" required>
         <input type="tel" name="phone" required>
         <input type="text" name="city" required>
-        <textarea name="delivery_address" required rows="3"></textarea>
+        <textarea name="delivery_address" required rows="3" 
+                  placeholder="Complete delivery address (building, street, neighborhood)"></textarea>
         <select name="delivery_type" required>
-          <option value="" disabled selected data-en="Delivery to" data-fr="Livraison à" data-ar="التوصيل إلى">Delivery to</option>
-          <option value="home" data-en="Home" data-fr="Domicile" data-ar="المنزل">Home</option>
-          <option value="office" data-en="Office" data-fr="Bureau" data-ar="المكتب">Office</option>
+          <option value="" disabled selected></option>
+          <option value="home">
+            <span class="en">🏠 Home Delivery</span>
+            <span class="fr">🏠 Livraison Domicile</span>
+            <span class="ar">🏠 توصيل للمنزل</span>
+          </option>
+          <option value="office">
+            <span class="en">🏢 Office Delivery</span>
+            <span class="fr">🏢 Livraison Bureau</span>
+            <span class="ar">🏢 توصيل للمكتب</span>
+          </option>
         </select>
-        <button type="submit" class="btn-primary">
-          <span class="en">Submit Order</span>
-          <span class="fr">Envoyer la commande</span>
-          <span class="ar">إرسال الطلب</span>
+        <button type="submit" class="btn-primary" style="width: 100%; font-size: 1.2rem; padding: 18px;">
+          <span class="en">🚚 Order Now - Cash on Delivery</span>
+          <span class="fr">🚚 Commander - Paiement à la Livraison</span>
+          <span class="ar">🚚 اطلب الآن - الدفع عند الاستلام</span>
         </button>
       </form>
 
@@ -409,20 +696,34 @@
     </div>
   </div>
 
-  <!-- Footer -->
+  <!-- Luxury Footer -->
   <footer>
     <img src="/images/youmerite.png" alt="You Mérite Logo" class="footer-logo" loading="lazy">
-    <div>
+    <div class="footer-links">
       <a href="mailto:shop@youmerite.com">shop@youmerite.com</a>
-      <a href="https://instagram.com/youmerite" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://tiktok.com/@youmerite" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <div class="social-icons">
+        <a href="https://instagram.com/youmerite" target="_blank" aria-label="Instagram" rel="noopener">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://tiktok.com/@youmerite" target="_blank" aria-label="TikTok" rel="noopener">
+          <i class="fab fa-tiktok"></i>
+        </a>
+      </div>
     </div>
+    <p style="opacity: 0.7; font-size: 0.95rem; margin-top: 2rem;">
+      <span class="en">Made with ♥ in Algiers | Cash on Delivery Everywhere in Algeria</span>
+      <span class="fr">Fait avec ♥ à Alger | Paiement à la Livraison Partout en Algérie</span>
+      <span class="ar">صُنع ب♥ في الجزائر | دفع عند الاستلام في كل الجزائر</span>
+    </p>
   </footer>
 
   <script>
+    // Global elements
     const html = document.documentElement;
     const langButtons = document.querySelectorAll('.lang-btn');
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
 
+    // Language Switch + Dynamic Placeholders
     langButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const lang = btn.dataset.lang;
@@ -431,6 +732,7 @@
         langButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         updatePlaceholders();
+        updateSelectTexts();
         updateCartDisplay();
       });
     });
@@ -438,30 +740,44 @@
     function updatePlaceholders() {
       const lang = html.dataset.lang || 'en';
       const form = document.getElementById('customer-form');
-      if (!form) return;
-
       const t = {
-        en: { name: "Full Name", phone: "Phone Number", city: "City", address: "Full Address", delivery: "Delivery to" },
-        fr: { name: "Nom complet", phone: "Numéro de téléphone", city: "Ville", address: "Adresse complète", delivery: "Livraison à" },
-        ar: { name: "الاسم الكامل", phone: "رقم الهاتف", city: "المدينة", address: "العنوان الكامل", delivery: "التوصيل إلى" }
+        en: {
+          name: "Full Name *", phone: "Phone Number (ex: 0551 23 45 67) *", 
+          city: "City *", address: "Complete Address (building, street, neighborhood) *"
+        },
+        fr: {
+          name: "Nom Complet *", phone: "Numéro Téléphone (ex: 0551 23 45 67) *", 
+          city: "Ville *", address: "Adresse Complète (immeuble, rue, quartier) *"
+        },
+        ar: {
+          name: "الاسم الكامل *", phone: "رقم الهاتف (مثال: 0551 23 45 67) *", 
+          city: "المدينة *", address: "العنوان الكامل (المبنى، الشارع، الحي) *"
+        }
       }[lang] || t.en;
 
       form.name.placeholder = t.name;
       form.phone.placeholder = t.phone;
       form.city.placeholder = t.city;
       form.delivery_address.placeholder = t.address;
+    }
 
-      const select = form.querySelector('select[name="delivery_type"]');
-      Array.from(select.options).forEach(opt => {
-        opt.textContent = opt.dataset[lang] || opt.dataset.en || opt.textContent;
+    function updateSelectTexts() {
+      const lang = html.dataset.lang || 'en';
+      const select = document.querySelector('select[name="delivery_type"]');
+      Array.from(select.options).forEach((opt, i) => {
+        if (i === 0) opt.textContent = {en: 'Select Delivery *', fr: 'Choisir Livraison *', ar: 'اختر التوصيل *'}[lang];
+        else {
+          const spans = opt.querySelectorAll('span');
+          opt.textContent = spans[lang === 'en' ? 0 : lang === 'fr' ? 1 : 2]?.textContent || opt.textContent;
+        }
       });
     }
 
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
+    // Cart Functions
     function saveCart() {
       localStorage.setItem('cart', JSON.stringify(cart));
-      document.getElementById('cart-count').textContent = cart.reduce((sum, i) => sum + i.quantity, 0);
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById('cart-count').textContent = count;
     }
 
     function updateCartDisplay() {
@@ -473,11 +789,21 @@
       cart.forEach((item, index) => {
         total += item.price * item.quantity;
         const div = document.createElement('div');
-        div.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border-gold);';
+        div.className = 'cart-item';
         div.innerHTML = `
-          <span>${item.name} × ${item.quantity}</span>
-          <span>${(item.price * item.quantity).toLocaleString()} DZD</span>
-          <button style="background:none;border:none;color:var(--gold);font-size:1.4rem;cursor:pointer;" onclick="removeFromCart(${index})">×</button>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-weight: 500;">${item.name}</span>
+            <span style="font-size: 0.9rem; opacity: 0.8;">${item.quantity}x ${item.price.toLocaleString()} DZD</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <span style="font-family: 'Cinzel', serif; font-size: 1.3rem; font-weight: 600; color: var(--gold);">
+              ${(item.price * item.quantity).toLocaleString()} DZD
+            </span>
+            <button onclick="removeFromCart(${index})" 
+                    style="background: var(--accent); color: var(--text); border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s;">
+              ×
+            </button>
+          </div>
         `;
         itemsDiv.appendChild(div);
       });
@@ -485,19 +811,21 @@
       totalEl.textContent = total.toLocaleString() + ' DZD';
     }
 
-    window.removeFromCart = function(index) {
+    window.removeFromCart = (index) => {
       cart.splice(index, 1);
       saveCart();
       updateCartDisplay();
     };
 
+    // Add to Cart
     document.querySelectorAll('.add-to-cart').forEach(btn => {
       btn.addEventListener('click', () => {
         const lang = html.getAttribute('data-lang') || 'en';
-        const name = btn.dataset[`name-${lang}`] || btn.dataset.nameEn || 'Product';
-        const price = Number(btn.dataset.price) || 0;
+        const nameKey = `name-${lang}`;
+        const name = btn.dataset[nameKey] || btn.dataset.nameEn;
+        const price = Number(btn.dataset.price);
 
-        const found = cart.find(i => i.name === name);
+        const found = cart.find(item => item.name === name);
         if (found) found.quantity++;
         else cart.push({ name, price, quantity: 1 });
 
@@ -506,26 +834,80 @@
       });
     });
 
+    // Modal Controls
     document.getElementById('cart-icon').onclick = () => {
       document.getElementById('cart-modal').style.display = 'flex';
       updateCartDisplay();
     };
 
-    document.getElementById('close-modal').onclick = () => {
-      document.getElementById('cart-modal').style.display = 'none';
+    document.getElementById('close-modal').onclick = 
+    window.onclick = (e) => {
+      if (e.target.id === 'cart-modal' || e.target.id === 'close-modal') {
+        document.getElementById('cart-modal').style.display = 'none';
+      }
     };
 
-    document.getElementById('customer-form').addEventListener('submit', e => {
+    // Form Submission (Telegram/WhatsApp ready - Algiers local)
+    document.getElementById('customer-form').addEventListener('submit', async (e) => {
       e.preventDefault();
-      const msg = document.getElementById('success-message');
-      msg.innerHTML = '<p style="color:#d4af37; margin-top:20px;">Order submitted! We will contact you soon. ♥</p>';
-      cart = [];
-      saveCart();
-      updateCartDisplay();
-      e.target.reset();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData);
+      const lang = html.dataset.lang || 'en';
+      
+      const orderDetails = cart.map(item => `${item.name} (${item.quantity}x${item.price}DZD)`).join('\n');
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      
+      const message = {
+        en: `🆕 *NEW ORDER*\n\n👤 ${data.name}\n📞 ${data.phone}\n📍 ${data.city} - ${data.delivery_address}\n📦 ${data.delivery_type}\n\n🛍️ *Products:*\n${orderDetails}\n\n💰 *TOTAL: ${total.toLocaleString()} DZD*\n💳 Cash on Delivery\n\n⏰ Confirm ASAP please! ♥`,
+        fr: `🆕 *NOUVELLE COMMANDE*\n\n👤 ${data.name}\n📞 ${data.phone}\n📍 ${data.city} - ${data.delivery_address}\n📦 ${data.delivery_type}\n\n🛍️ *Produits:*\n${orderDetails}\n\n💰 *TOTAL: ${total.toLocaleString()} DZD*\n💳 Paiement à la livraison\n\n⏰ Confirmer rapidement svp! ♥`,
+        ar: `🆕 *طلب جديد*\n\n👤 ${data.name}\n📞 ${data.phone}\n📍 ${data.city} - ${data.delivery_address}\n📦 ${data.delivery_type}\n\n🛍️ *المنتجات:*\n${orderDetails}\n\n💰 *المجموع: ${total.toLocaleString()} DZD*\n💳 الدفع عند الاستلام\n\n⏰ يرجى التأكيد فوراً! ♥`
+      }[lang];
+
+      try {
+        // WhatsApp fallback for Algeria
+        const whatsappUrl = `https://wa.me/213${data.phone.replace(/\D/g,'')?.slice(-9)}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+        
+        // Success UI
+        const successMsg = document.getElementById('success-message');
+        successMsg.innerHTML = `
+          <div style="text-align: center; animation: fadeInUp 0.6s ease-out;">
+            <i class="fas fa-heart" style="font-size: 3rem; color: var(--gold); margin-bottom: 15px; display: block;"></i>
+            <h3 style="color: var(--gold); margin-bottom: 10px; font-family: 'Cinzel', serif;">
+              <span class="en">Order Received! ♥</span>
+              <span class="fr">Commande Reçue! ♥</span>
+              <span class="ar">تم استلام الطلب! ♥</span>
+            </h3>
+            <p style="opacity: 0.9;">
+              <span class="en">We will call you within 30min to confirm 🚚 Cash on Delivery</span>
+              <span class="fr">Nous vous appelons dans 30min pour confirmer 🚚 Paiement à la livraison</span>
+              <span class="ar">سنتصل بك خلال 30 دقيقة للتأكيد 🚚 الدفع عند الاستلام</span>
+            </p>
+          </div>
+        `;
+        successMsg.classList.add('show');
+        
+        // Reset cart & form
+        cart = [];
+        saveCart();
+        updateCartDisplay();
+        e.target.reset();
+        
+        // Auto close modal after 6s
+        setTimeout(() => {
+          document.getElementById('cart-modal').style.display = 'none';
+          successMsg.classList.remove('show');
+        }, 6000);
+        
+      } catch (err) {
+        alert('Submission failed. Please try WhatsApp directly.');
+        console.error(err);
+      }
     });
 
+    // Initialize
     updatePlaceholders();
+    updateSelectTexts();
     saveCart();
     updateCartDisplay();
   </script>
