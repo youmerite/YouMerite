@@ -5,16 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>You Mérite • Luxury Gift Boxes</title>
 
+  <!-- SEO Meta -->
   <meta name="description" content="Romantic couple gift sets with luxury lingerie, premium underwear, perfume, watch & bracelet. You deserve the best. ♥ Shop now at You Mérite.">
 
   <link rel="alternate" hreflang="en" href="https://youmerite.com/">
   <link rel="alternate" hreflang="fr" href="https://youmerite.com/?lang=fr">
   <link rel="alternate" hreflang="ar" href="https://youmerite.com/?lang=ar">
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
@@ -51,9 +54,7 @@
       position: relative;
     }
 
-    .logo-container {
-      margin-bottom: 1.5rem;
-    }
+    .logo-container { margin-bottom: 1.5rem; }
 
     .logo {
       max-width: 220px;
@@ -72,19 +73,16 @@
       text-shadow: 0 6px 30px rgba(212,175,55,0.4);
     }
 
-    .subtitle, .slogan {
-      text-shadow: 0 4px 20px rgba(0,0,0,0.7);
-    }
+    .subtitle { font-size: 1.8rem; font-style: italic; opacity: 0.92; margin-bottom: 1.8rem; letter-spacing: 1px; }
+    .slogan { font-size: 1.5rem; color: var(--gold); margin-bottom: 2.5rem; font-weight: 500; }
 
     .btn-primary {
-      display: inline-block;
       background: transparent;
       border: 2px solid var(--gold);
       color: var(--gold);
       padding: 14px 40px;
       font-family: 'Cinzel', serif;
       font-size: 1.1rem;
-      font-weight: 400;
       letter-spacing: 2px;
       cursor: pointer;
       transition: all 0.4s ease;
@@ -112,7 +110,6 @@
       margin-left: 8px;
       cursor: pointer;
       transition: 0.4s;
-      font-family: 'Playfair Display', serif;
     }
 
     .lang-btn.active, .lang-btn:hover { background: var(--gold); color: var(--bg); }
@@ -122,8 +119,30 @@
     [data-lang="ar"] .en, [data-lang="ar"] .fr { display:none; }
     [data-lang="ar"] body { direction: rtl; text-align: right; }
 
+    .categories {
+      padding: 60px 40px;
+      text-align: center;
+      background: rgba(10,6,3,0.6);
+    }
+
+    .category-btn {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 12px 30px;
+      margin: 10px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: 0.3s;
+    }
+
+    .category-btn.active, .category-btn:hover {
+      background: var(--gold);
+      color: var(--bg);
+    }
+
     #shop {
-      padding: 120px 40px;
+      padding: 60px 40px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 40px;
@@ -154,8 +173,8 @@
       object-position: center;
       border-radius: 8px;
       margin-bottom: 20px;
-      transition: transform 0.6s ease;
       background: rgba(212,175,55,0.05);
+      transition: transform 0.6s ease;
     }
 
     .product-card:hover img { transform: scale(1.05); }
@@ -186,10 +205,7 @@
       gap: 12px;
     }
 
-    .cart-icon i {
-      font-size: 3rem;
-      color: #d4af37 !important;
-    }
+    .cart-icon i { font-size: 3rem; color: #d4af37 !important; }
 
     .cart-icon span {
       font-size: 1.5rem;
@@ -259,10 +275,7 @@
       transition: 0.3s;
     }
 
-    .social-icons a:hover {
-      color: var(--accent);
-      transform: translateY(-5px);
-    }
+    .social-icons a:hover { color: var(--accent); transform: translateY(-5px); }
 
     .contact-info {
       margin-top: 20px;
@@ -273,22 +286,21 @@
     .contact-info a {
       color: var(--gold);
       text-decoration: none;
-      transition: color 0.3s;
     }
 
-    .contact-info a:hover {
-      color: var(--accent);
-    }
+    .contact-info a:hover { color: var(--accent); }
   </style>
 </head>
 <body>
 
+  <!-- Language Switch -->
   <div class="lang-switch">
     <button class="lang-btn active" data-lang="en">EN</button>
     <button class="lang-btn" data-lang="fr">FR</button>
     <button class="lang-btn" data-lang="ar">AR</button>
   </div>
 
+  <!-- Cart Icon -->
   <div class="cart-icon" id="cart-icon">
     <i class="fa-solid fa-cart-shopping"></i>
     <span id="cart-count">0</span>
@@ -310,9 +322,20 @@
     </div>
   </header>
 
+  <!-- Categories -->
+  <section class="categories">
+    <button class="category-btn active" data-category="all">Tous les produits</button>
+    <button class="category-btn" data-category="femme">Lingerie Femme</button>
+    <button class="category-btn" data-category="homme">Lingerie Homme</button>
+    <button class="category-btn" data-category="couple">Couple Sets</button>
+    <!-- Gelecekte eklenecek: -->
+    <!-- <button class="category-btn" data-category="parfum">Parfums & Accessoires</button> -->
+    <!-- <button class="category-btn" data-category="bijoux">Bijoux & Montres</button> -->
+  </section>
+
   <section id="shop">
-    <div class="product-card">
-      <img src="/images/royal-merite-woman-open.jpg" loading="lazy" alt="Royal Mérite Woman – Luxury red lace lingerie set with perfume, gold bracelet and elegant packaging">
+    <div class="product-card" data-category="femme">
+      <img src="/images/royal-merite-woman-open.jpg" loading="lazy" alt="Royal Mérite Woman">
       <h3 class="en">Royal Mérite Woman</h3>
       <h3 class="fr">Royal Mérite Femme</h3>
       <h3 class="ar">رويال ميريت نساء</h3>
@@ -325,8 +348,8 @@
       </button>
     </div>
 
-    <div class="product-card">
-      <img src="/images/royal-merite-man-open.jpg" loading="lazy" alt="Royal Mérite Man – Premium men's watch, bracelet, perfume and luxury underwear gift set">
+    <div class="product-card" data-category="homme">
+      <img src="/images/royal-merite-man-open.jpg" loading="lazy" alt="Royal Mérite Man">
       <h3 class="en">Royal Mérite Man</h3>
       <h3 class="fr">Royal Mérite Homme</h3>
       <h3 class="ar">رويال ميريت رجال</h3>
@@ -339,8 +362,8 @@
       </button>
     </div>
 
-    <div class="product-card">
-      <img src="/images/royal-merite-couple.jpeg" loading="lazy" alt="Royal Mérite Deluxe Couple – Luxury couple gift box with matching lingerie, perfume, watch and bracelets">
+    <div class="product-card" data-category="couple">
+      <img src="/images/royal-merite-couple.jpeg" loading="lazy" alt="Royal Mérite Deluxe">
       <h3 class="en">Royal Mérite Deluxe</h3>
       <h3 class="fr">Royal Mérite Deluxe</h3>
       <h3 class="ar">رويال ميريت ديلوكس</h3>
@@ -352,8 +375,18 @@
         <span class="ar">أضف إلى السلة</span>
       </button>
     </div>
+
+    <!-- Gelecekte yeni kategoriler için örnek kartlar ekleyebilirsiniz -->
+    <!-- <div class="product-card" data-category="parfum" style="display:none;">
+      <img src="..." loading="lazy" alt="...">
+      <h3>Parfum Premium</h3>
+      <p>...</p>
+      <div class="price">...</div>
+      <button class="btn-primary add-to-cart">Add to Cart</button>
+    </div> -->
   </section>
 
+  <!-- Cart Modal -->
   <div class="cart-modal" id="cart-modal">
     <div class="cart-content">
       <span class="close-modal" id="close-modal">×</span>
@@ -364,20 +397,16 @@
       <p>Total: <span id="cart-total">0 DZD</span></p>
 
       <form id="customer-form">
-        <input type="text" name="name" required>
-        <input type="tel" name="phone" required>
-        <input type="text" name="city" required>
-        <textarea name="delivery_address" required rows="3"></textarea>
+        <input type="text" name="name" required placeholder="Full Name">
+        <input type="tel" name="phone" required placeholder="Phone Number">
+        <input type="text" name="city" required placeholder="City">
+        <textarea name="delivery_address" required rows="3" placeholder="Full Address"></textarea>
         <select name="delivery_type" required>
-          <option value="" disabled selected data-en="Delivery to" data-fr="Livraison à" data-ar="التوصيل إلى">Delivery to</option>
-          <option value="home" data-en="Home" data-fr="Domicile" data-ar="المنزل">Home</option>
-          <option value="office" data-en="Office" data-fr="Bureau" data-ar="المكتب">Office</option>
+          <option value="" disabled selected>Livraison à</option>
+          <option value="home">Domicile</option>
+          <option value="office">Bureau</option>
         </select>
-        <button type="submit" class="btn-primary">
-          <span class="en">Submit Order</span>
-          <span class="fr">Envoyer la commande</span>
-          <span class="ar">إرسال الطلب</span>
-        </button>
+        <button type="submit" class="btn-primary">Submit Order</button>
       </form>
 
       <div id="success-message"></div>
@@ -501,6 +530,27 @@
       saveCart();
       updateCartDisplay();
       e.target.reset();
+    });
+
+    // Kategori filtreleme
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const productCards = document.querySelectorAll('.product-card');
+
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const category = btn.dataset.category;
+
+        productCards.forEach(card => {
+          if (category === 'all' || card.dataset.category === category) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
     });
 
     updatePlaceholders();
