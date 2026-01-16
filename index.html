@@ -589,13 +589,15 @@ ${cartText || 'Sepet boş'}
           })
         });
 
-        if (response.ok) {
+        const data = await response.json();
+
+        if (response.ok && data.ok) {
           document.getElementById('success-message').innerHTML = '<p style="color:#d4af37; margin-top:20px;">Sipariş Telegram\'a gönderildi! En kısa sürede dönüş yapacağız. ♥</p>';
         } else {
-          throw new Error(await response.text());
+          throw new Error(data.description || 'Bilinmeyen hata');
         }
       } catch (error) {
-        console.error('Telegram Gönderim Hatası:', error);
+        console.error('Telegram Gönderim Hatası:', error.message);
         document.getElementById('success-message').innerHTML = '<p style="color:#ff6b6b; margin-top:20px;">Sipariş kaydedildi ama Telegram\'a gönderilemedi. Lütfen WhatsApp\'tan bize ulaşın. ♥</p>';
       }
 
