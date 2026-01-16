@@ -5,19 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>You Mérite • Luxury Gift Boxes</title>
 
-  <!-- SEO Meta -->
   <meta name="description" content="Romantic couple gift sets with luxury lingerie, premium underwear, perfume, watch & bracelet. You deserve the best. ♥ Shop now at You Mérite.">
 
   <link rel="alternate" hreflang="en" href="https://youmerite.com/">
   <link rel="alternate" hreflang="fr" href="https://youmerite.com/?lang=fr">
   <link rel="alternate" hreflang="ar" href="https://youmerite.com/?lang=ar">
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
@@ -73,8 +70,9 @@
       text-shadow: 0 6px 30px rgba(212,175,55,0.4);
     }
 
-    .subtitle { font-size: 1.8rem; font-style: italic; opacity: 0.92; margin-bottom: 1.8rem; letter-spacing: 1px; }
-    .slogan { font-size: 1.5rem; color: var(--gold); margin-bottom: 2.5rem; font-weight: 500; }
+    .subtitle, .slogan {
+      text-shadow: 0 4px 20px rgba(0,0,0,0.7);
+    }
 
     .btn-primary {
       background: transparent;
@@ -143,7 +141,7 @@
 
     #shop {
       padding: 60px 40px;
-      display: grid;
+      display: none; /* Başlangıçta gizli */
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 40px;
       max-width: 1400px;
@@ -268,27 +266,37 @@
       border-top: 1px solid var(--border-gold);
     }
 
+    .social-icons {
+      margin-bottom: 20px;
+    }
+
     .social-icons a {
       color: var(--gold);
-      font-size: 2.5rem;
-      margin: 0 30px;
+      font-size: 3rem;
+      margin: 0 40px;
       transition: 0.3s;
     }
 
-    .social-icons a:hover { color: var(--accent); transform: translateY(-5px); }
+    .social-icons a:hover {
+      color: var(--accent);
+      transform: translateY(-8px);
+    }
 
     .contact-info {
       margin-top: 20px;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       opacity: 0.9;
     }
 
     .contact-info a {
       color: var(--gold);
       text-decoration: none;
+      transition: color 0.3s;
     }
 
-    .contact-info a:hover { color: var(--accent); }
+    .contact-info a:hover {
+      color: var(--accent);
+    }
   </style>
 </head>
 <body>
@@ -324,13 +332,10 @@
 
   <!-- Categories -->
   <section class="categories">
-    <button class="category-btn active" data-category="all">Tous les produits</button>
-    <button class="category-btn" data-category="femme">Lingerie Femme</button>
-    <button class="category-btn" data-category="homme">Lingerie Homme</button>
-    <button class="category-btn" data-category="couple">Couple Sets</button>
-    <!-- Gelecekte eklenecek: -->
-    <!-- <button class="category-btn" data-category="parfum">Parfums & Accessoires</button> -->
-    <!-- <button class="category-btn" data-category="bijoux">Bijoux & Montres</button> -->
+    <button class="category-btn active" data-category="all" data-en="All Products" data-fr="Tous les produits" data-ar="كل المنتجات">Tous les produits</button>
+    <button class="category-btn" data-category="femme" data-en="Women's Lingerie" data-fr="Lingerie Femme" data-ar="لانجري نسائي">Lingerie Femme</button>
+    <button class="category-btn" data-category="homme" data-en="Men's Lingerie" data-fr="Lingerie Homme" data-ar="لانجري رجالي">Lingerie Homme</button>
+    <button class="category-btn" data-category="couple" data-en="Couple Sets" data-fr="Sets Couple" data-ar="مجموعات الأزواج">Sets Couple</button>
   </section>
 
   <section id="shop">
@@ -375,15 +380,6 @@
         <span class="ar">أضف إلى السلة</span>
       </button>
     </div>
-
-    <!-- Gelecekte yeni kategoriler için örnek kartlar ekleyebilirsiniz -->
-    <!-- <div class="product-card" data-category="parfum" style="display:none;">
-      <img src="..." loading="lazy" alt="...">
-      <h3>Parfum Premium</h3>
-      <p>...</p>
-      <div class="price">...</div>
-      <button class="btn-primary add-to-cart">Add to Cart</button>
-    </div> -->
   </section>
 
   <!-- Cart Modal -->
@@ -397,26 +393,35 @@
       <p>Total: <span id="cart-total">0 DZD</span></p>
 
       <form id="customer-form">
-        <input type="text" name="name" required placeholder="Full Name">
-        <input type="tel" name="phone" required placeholder="Phone Number">
-        <input type="text" name="city" required placeholder="City">
-        <textarea name="delivery_address" required rows="3" placeholder="Full Address"></textarea>
+        <input type="text" name="name" required>
+        <input type="tel" name="phone" required>
+        <input type="text" name="city" required>
+        <textarea name="delivery_address" required rows="3"></textarea>
         <select name="delivery_type" required>
-          <option value="" disabled selected>Livraison à</option>
-          <option value="home">Domicile</option>
-          <option value="office">Bureau</option>
+          <option value="" disabled selected data-en="Delivery to" data-fr="Livraison à" data-ar="التوصيل إلى">Delivery to</option>
+          <option value="home" data-en="Home" data-fr="Domicile" data-ar="المنزل">Home</option>
+          <option value="office" data-en="Office" data-fr="Bureau" data-ar="المكتب">Office</option>
         </select>
-        <button type="submit" class="btn-primary">Submit Order</button>
+        <button type="submit" class="btn-primary">
+          <span class="en">Submit Order</span>
+          <span class="fr">Envoyer la commande</span>
+          <span class="ar">إرسال الطلب</span>
+        </button>
       </form>
 
       <div id="success-message"></div>
     </div>
   </div>
 
+  <!-- Footer – Instagram ve TikTok ikonları net bir şekilde burada -->
   <footer>
     <div class="social-icons">
-      <a href="https://instagram.com/youmerite" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://tiktok.com/@youmerite" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://instagram.com/youmerite" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://tiktok.com/@youmerite" target="_blank" aria-label="TikTok">
+        <i class="fab fa-tiktok"></i>
+      </a>
     </div>
 
     <div class="contact-info">
@@ -429,7 +434,13 @@
   <script>
     const html = document.documentElement;
     const langButtons = document.querySelectorAll('.lang-btn');
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const productCards = document.querySelectorAll('.product-card');
 
+    // Sayfa yüklendiğinde shop gizli
+    document.getElementById('shop').style.display = 'none';
+
+    // Dil değişimi + kategori butonlarını güncelle
     langButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const lang = btn.dataset.lang;
@@ -437,8 +448,36 @@
         html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
         langButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+
+        // Kategori buton metinlerini güncelle
+        categoryBtns.forEach(catBtn => {
+          const key = `data-${lang}`;
+          catBtn.textContent = catBtn.getAttribute(key) || catBtn.getAttribute('data-en');
+        });
+
         updatePlaceholders();
         updateCartDisplay();
+      });
+    });
+
+    // Kategori seçimi
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const category = btn.dataset.category;
+
+        // Shop'u göster
+        document.getElementById('shop').style.display = 'grid';
+
+        productCards.forEach(card => {
+          if (category === 'all' || card.dataset.category === category) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
       });
     });
 
@@ -530,27 +569,6 @@
       saveCart();
       updateCartDisplay();
       e.target.reset();
-    });
-
-    // Kategori filtreleme
-    const categoryBtns = document.querySelectorAll('.category-btn');
-    const productCards = document.querySelectorAll('.product-card');
-
-    categoryBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        categoryBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const category = btn.dataset.category;
-
-        productCards.forEach(card => {
-          if (category === 'all' || card.dataset.category === category) {
-            card.style.display = 'block';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
     });
 
     updatePlaceholders();
