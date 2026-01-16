@@ -4,32 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>You Mérite • Luxury Gift Boxes</title>
-  
-  <!-- Meta Description for SEO (English, French, Arabic) -->
+
+  <!-- Primary meta description -->
   <meta name="description" content="Romantic couple gift sets with luxury lingerie, premium underwear, perfume, watch & bracelet. You deserve the best. ♥ Shop now at You Mérite.">
-  <meta name="description" lang="fr" content="Coffrets cadeaux couples romantiques avec lingerie de luxe, sous-vêtements premium, parfum, montre & bracelet. Vous méritez le meilleur. ♥ Boutiquez maintenant.">
-  <meta name="description" lang="ar" content="مجموعات هدايا الأزواج الرومانسية من You Mérite: ملابس داخلية فاخرة بالدانتيل الأحمر، ملابس داخلية سوداء فاخرة، عطر، ساعة وأساور قلب. أنتما تستحقان الأفضل. ♥ تسوق الآن">
-  
-  <!-- Google Fonts - Plus élégantes -->
+
+  <!-- Multilingual SEO -->
+  <link rel="alternate" hreflang="en" href="https://youmerite.com/">
+  <link rel="alternate" hreflang="fr" href="https://youmerite.com/?lang=fr">
+  <link rel="alternate" hreflang="ar" href="https://youmerite.com/?lang=ar">
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome pour icônes Instagram & TikTok -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     :root {
-      --bg: #0a0603;                /* Noir très profond, luxury */
-      --text: #f8f1e9;              /* Crème doux */
-      --gold: #d4af37;              /* Or classique */
+      --bg: #0a0603;
+      --text: #f8f1e9;
+      --gold: #d4af37;
       --gold-dark: #b8972e;
-      --accent: #800020;            /* Rouge bordeaux profond */
+      --accent: #800020;
       --card-bg: rgba(212,175,55,0.04);
       --border-gold: rgba(212,175,55,0.25);
     }
 
     * { margin:0; padding:0; box-sizing:border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
       background: var(--bg);
       color: var(--text);
@@ -38,16 +44,32 @@
       overflow-x: hidden;
     }
 
-    /* Header - Plus immersif */
     header {
       height: 100vh;
       min-height: 700px;
-      background: linear-gradient(rgba(10,6,3,0.75), rgba(10,6,3,0.85)), url('https://via.placeholder.com/1600x900/0a0603/000000?text=You+Merite+Luxury') center/cover no-repeat fixed;
+      background: linear-gradient(rgba(10,6,3,0.92), rgba(10,6,3,0.97)),
+                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat fixed;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       position: relative;
+    }
+
+    .logo-container {
+      margin-bottom: 1.5rem;
+    }
+
+    .logo {
+      max-width: 220px;
+      height: auto;
+      filter: drop-shadow(0 8px 25px rgba(212,175,55,0.4));
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.08);
+      filter: drop-shadow(0 12px 35px rgba(212,175,55,0.6));
     }
 
     .hero-content {
@@ -62,7 +84,7 @@
       color: var(--gold);
       letter-spacing: 8px;
       margin-bottom: 0.3em;
-      text-shadow: 0 6px 30px rgba(212,175,55,0.3);
+      text-shadow: 0 6px 30px rgba(0,0,0,0.8);
     }
 
     .subtitle {
@@ -71,6 +93,7 @@
       opacity: 0.92;
       margin-bottom: 1.8rem;
       letter-spacing: 1px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.7);
     }
 
     .slogan {
@@ -78,6 +101,7 @@
       color: var(--gold);
       margin-bottom: 2.5rem;
       font-weight: 500;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.7);
     }
 
     .btn-primary {
@@ -91,15 +115,15 @@
       font-weight: 400;
       letter-spacing: 2px;
       text-decoration: none;
-      transition: all 0.4s ease;
       cursor: pointer;
+      transition: all 0.4s ease;
     }
 
     .btn-primary:hover {
       background: var(--gold);
       color: var(--bg);
       transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(212,175,55,0.25);
+      box-shadow: 0 10px 30px rgba(212,175,55,0.35);
     }
 
     /* Language switch */
@@ -121,20 +145,17 @@
       font-family: 'Playfair Display', serif;
     }
 
-    .lang-btn.active, .lang-btn:hover {
-      background: var(--gold);
-      color: var(--bg);
-    }
+    .lang-btn.active, .lang-btn:hover { background: var(--gold); color: var(--bg); }
 
-    /* Visibility */
+    /* Visibility rules */
     [data-lang="en"] .fr, [data-lang="en"] .ar { display:none; }
     [data-lang="fr"] .en, [data-lang="fr"] .ar { display:none; }
-    [data-lang="ar"] .en, [data-lang="fr"] .fr { display:none; }
-    [data-lang="ar"] body { direction:rtl; text-align:right; }
+    [data-lang="ar"] .en, [data-lang="ar"] .fr { display:none; }
+    [data-lang="ar"] body { direction: rtl; text-align: right; }
 
     /* Shop */
     #shop {
-      padding: 100px 40px;
+      padding: 120px 40px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 40px;
@@ -165,9 +186,7 @@
       transition: transform 0.6s ease;
     }
 
-    .product-card:hover img {
-      transform: scale(1.05);
-    }
+    .product-card:hover img { transform: scale(1.05); }
 
     .product-card h3 {
       font-family: 'Cinzel', serif;
@@ -177,18 +196,9 @@
       letter-spacing: 1px;
     }
 
-    .product-card p {
-      font-size: 1.1rem;
-      opacity: 0.9;
-      margin-bottom: 15px;
-    }
+    .product-card p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 15px; }
 
-    .price {
-      color: var(--gold);
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
+    .price { color: var(--gold); font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; }
 
     /* Cart */
     .cart-icon {
@@ -208,7 +218,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(10,6,3,0.9);
+      background: rgba(10,6,3,0.92);
       z-index: 10000;
       justify-content: center;
       align-items: center;
@@ -219,9 +229,9 @@
       border: 2px solid var(--gold);
       border-radius: 16px;
       width: 90%;
-      max-width: 580px;
+      max-width: 600px;
       padding: 40px;
-      max-height: 85vh;
+      max-height: 88vh;
       overflow-y: auto;
       position: relative;
     }
@@ -235,6 +245,18 @@
       cursor: pointer;
     }
 
+    /* Form */
+    #customer-form input, #customer-form textarea, #customer-form select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      background: rgba(248,241,233,0.08);
+      border: 1px solid var(--border-gold);
+      color: var(--text);
+      border-radius: 6px;
+      font-family: inherit;
+    }
+
     /* Footer */
     footer {
       padding: 60px 40px;
@@ -243,18 +265,23 @@
       border-top: 1px solid var(--border-gold);
     }
 
+    .footer-logo {
+      max-width: 140px;
+      height: auto;
+      margin-bottom: 1.2rem;
+      opacity: 0.9;
+      filter: drop-shadow(0 4px 12px rgba(212,175,55,0.2));
+    }
+
     footer a {
       color: var(--gold);
       text-decoration: none;
       margin: 0 20px;
-      font-size: 0 1.6rem;
+      font-size: 1.6rem;
       transition: 0.3s;
     }
 
-    footer a:hover {
-      color: var(--accent);
-      transform: translateY(-4px);
-    }
+    footer a:hover { color: var(--accent); transform: translateY(-3px); }
   </style>
 </head>
 <body>
@@ -271,15 +298,17 @@
 
   <header>
     <div class="hero-content">
-      <h1 class="en fr ar">You Mérite</h1>
+      <div class="logo-container">
+        <img src="/images/youmerite.png" alt="You Mérite Logo" class="logo" loading="lazy">
+      </div>
+      <h1>You Mérite</h1>
       <p class="subtitle en">Luxury Lingerie • Exquisite Gift Boxes</p>
       <p class="subtitle fr">Lingerie de Luxe • Coffrets Cadeaux d’Exception</p>
       <p class="subtitle ar">لانجري فاخر • صناديق هدايا راقية</p>
+
       <div class="slogan en">You deserve the finest ♥</div>
       <div class="slogan fr">Vous méritez le summum ♥</div>
-      <div class="slogan ar">أنت تستحق الأرقى ♥</div>
-      <!-- Optionnel : bouton CTA -->
-      <!-- <a href="#shop" class="btn-primary">Discover Collections</a> -->
+      <div class="slogan ar">أنتما تستحقان الأفضل ♥</div>
     </div>
   </header>
 
@@ -287,84 +316,113 @@
   <section id="shop">
     <!-- Product 1 -->
     <div class="product-card">
-      <img src="/images/royal-merite-woman-open.jpg" alt="Royal Mérite Woman">
+      <img src="/images/royal-merite-woman-open.jpg" loading="lazy" alt="Royal Mérite Woman – Luxury red lace lingerie set">
       <h3 class="en">Royal Mérite Woman</h3>
       <h3 class="fr">Royal Mérite Femme</h3>
-      <h3 class="ar">رويال ميريت وومن</h3>
-      <p class="en fr ar">Luxury Gift Experience</p>
+      <h3 class="ar">رويال ميريت نساء</h3>
+      <p class="en">Luxury Gift Experience</p>
+      <p class="fr">Expérience Cadeau de Luxe</p>
+      <p class="ar">تجربة هدية فاخرة</p>
       <div class="price">22,000 DZD</div>
-      <button class="btn-primary add-to-cart" 
-              data-name-en="Royal Mérite Woman" 
-              data-name-fr="Royal Mérite Femme" 
-              data-name-ar="رويال ميريت وومن" 
-              data-price="22000">Add to Cart</button>
+      <button class="btn-primary add-to-cart"
+              data-name-en="Royal Mérite Woman"
+              data-name-fr="Royal Mérite Femme"
+              data-name-ar="رويال ميريت نساء"
+              data-price="22000">
+        <span class="en">Add to Cart</span>
+        <span class="fr">Ajouter au panier</span>
+        <span class="ar">أضف إلى السلة</span>
+      </button>
     </div>
 
     <!-- Product 2 -->
     <div class="product-card">
-      <img src="/images/royal-merite-man-open.jpg" alt="Royal Mérite Homme">
-      <h3 class="en fr">Royal Mérite Homme</h3>
-      <h3 class="ar">رويال ميريت هوم</h3>
-      <p class="en fr ar">Luxury Gift Experience</p>
+      <img src="/images/royal-merite-man-open.jpg" loading="lazy" alt="Royal Mérite Man – Premium men's luxury gift set">
+      <h3 class="en">Royal Mérite Man</h3>
+      <h3 class="fr">Royal Mérite Homme</h3>
+      <h3 class="ar">رويال ميريت رجال</h3>
+      <p class="en">Luxury Gift Experience</p>
+      <p class="fr">Expérience Cadeau de Luxe</p>
+      <p class="ar">تجربة هدية فاخرة</p>
       <div class="price">25,000 DZD</div>
-      <button class="btn-primary add-to-cart" 
-              data-name-en="Royal Mérite Homme" 
-              data-name-fr="Royal Mérite Homme" 
-              data-name-ar="رويال ميريت هوم" 
-              data-price="25000">Add to Cart</button>
+      <button class="btn-primary add-to-cart"
+              data-name-en="Royal Mérite Man"
+              data-name-fr="Royal Mérite Homme"
+              data-name-ar="رويال ميريت رجال"
+              data-price="25000">
+        <span class="en">Add to Cart</span>
+        <span class="fr">Ajouter au panier</span>
+        <span class="ar">أضف إلى السلة</span>
+      </button>
     </div>
 
     <!-- Product 3 -->
     <div class="product-card">
-      <img src="/images/royal mérite couple.jpeg" alt="Royal Mérite Deluxe">
-      <h3 class="en fr">Royal Mérite Deluxe</h3>
+      <img src="/images/royal-merite-couple.jpeg" loading="lazy" alt="Royal Mérite Deluxe Couple – Luxury couple gift box">
+      <h3 class="en">Royal Mérite Deluxe</h3>
+      <h3 class="fr">Royal Mérite Deluxe</h3>
       <h3 class="ar">رويال ميريت ديلوكس</h3>
-      <p class="en fr ar">Luxury Gift Experience</p>
+      <p class="en">Luxury Gift Experience</p>
+      <p class="fr">Expérience Cadeau de Luxe</p>
+      <p class="ar">تجربة هدية فاخرة</p>
       <div class="price">30,000 DZD</div>
-      <button class="btn-primary add-to-cart" 
-              data-name-en="Royal Mérite Deluxe" 
-              data-name-fr="Royal Mérite Deluxe" 
-              data-name-ar="رويال ميريت ديلوكس" 
-              data-price="30000">Add to Cart</button>
+      <button class="btn-primary add-to-cart"
+              data-name-en="Royal Mérite Deluxe"
+              data-name-fr="Royal Mérite Deluxe"
+              data-name-ar="رويال ميريت ديلوكس"
+              data-price="30000">
+        <span class="en">Add to Cart</span>
+        <span class="fr">Ajouter au panier</span>
+        <span class="ar">أضف إلى السلة</span>
+      </button>
     </div>
   </section>
 
-  <!-- Cart Modal (inchangé sauf style) -->
+  <!-- Cart Modal -->
   <div class="cart-modal" id="cart-modal">
     <div class="cart-content">
       <span class="close-modal" id="close-modal">×</span>
       <h2 class="en">Your Cart</h2>
       <h2 class="fr">Votre Panier</h2>
-      <h2 class="ar">سلة التسوق الخاصة بك</h2>
+      <h2 class="ar">سلة التسوق</h2>
       <div id="cart-items"></div>
       <p>Total: <span id="cart-total">0 DZD</span></p>
+
       <form id="customer-form">
-        <input type="text" name="name" placeholder="Full Name" required>
-        <input type="tel" name="phone" placeholder="Phone Number" required>
-        <input type="text" name="city" placeholder="City" required>
-        <textarea name="delivery_address" placeholder="Full Address" required rows="3"></textarea>
+        <input type="text" name="name" required>
+        <input type="tel" name="phone" required>
+        <input type="text" name="city" required>
+        <textarea name="delivery_address" required rows="3"></textarea>
         <select name="delivery_type" required>
-          <option value="" disabled selected>Delivery to</option>
-          <option value="home">Home</option>
-          <option value="office">Office</option>
+          <option value="" disabled selected data-en="Delivery to" data-fr="Livraison à" data-ar="التوصيل إلى">Delivery to</option>
+          <option value="home" data-en="Home" data-fr="Domicile" data-ar="المنزل">Home</option>
+          <option value="office" data-en="Office" data-fr="Bureau" data-ar="المكتب">Office</option>
         </select>
-        <button type="submit" class="btn-primary">Submit Order</button>
+        <button type="submit" class="btn-primary">
+          <span class="en">Submit Order</span>
+          <span class="fr">Envoyer la commande</span>
+          <span class="ar">إرسال الطلب</span>
+        </button>
       </form>
+
       <div id="success-message"></div>
     </div>
   </div>
 
-  <!-- Footer avec icônes -->
+  <!-- Footer -->
   <footer>
-    <a href="mailto:shop@youmerite.com">shop@youmerite.com</a>
-    <a href="https://instagram.com/youmerite" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://tiktok.com/@youmerite" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <img src="/images/youmerite.png" alt="You Mérite Logo" class="footer-logo" loading="lazy">
+    <div>
+      <a href="mailto:shop@youmerite.com">shop@youmerite.com</a>
+      <a href="https://instagram.com/youmerite" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://tiktok.com/@youmerite" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
   </footer>
 
   <script>
-    // Language switch
-    const langButtons = document.querySelectorAll('.lang-btn');
     const html = document.documentElement;
+    const langButtons = document.querySelectorAll('.lang-btn');
+
     langButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const lang = btn.dataset.lang;
@@ -372,62 +430,102 @@
         html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
         langButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+        updatePlaceholders();
+        updateCartDisplay();
       });
     });
 
-    // Cart logic (inchangé)
+    function updatePlaceholders() {
+      const lang = html.dataset.lang || 'en';
+      const form = document.getElementById('customer-form');
+      if (!form) return;
+
+      const t = {
+        en: { name: "Full Name", phone: "Phone Number", city: "City", address: "Full Address", delivery: "Delivery to" },
+        fr: { name: "Nom complet", phone: "Numéro de téléphone", city: "Ville", address: "Adresse complète", delivery: "Livraison à" },
+        ar: { name: "الاسم الكامل", phone: "رقم الهاتف", city: "المدينة", address: "العنوان الكامل", delivery: "التوصيل إلى" }
+      }[lang] || t.en;
+
+      form.name.placeholder = t.name;
+      form.phone.placeholder = t.phone;
+      form.city.placeholder = t.city;
+      form.delivery_address.placeholder = t.address;
+
+      const select = form.querySelector('select[name="delivery_type"]');
+      Array.from(select.options).forEach(opt => {
+        opt.textContent = opt.dataset[lang] || opt.dataset.en || opt.textContent;
+      });
+    }
+
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
     function saveCart() {
       localStorage.setItem('cart', JSON.stringify(cart));
-      document.getElementById('cart-count').textContent = cart.reduce((s, i) => s + i.quantity, 0);
+      document.getElementById('cart-count').textContent = cart.reduce((sum, i) => sum + i.quantity, 0);
     }
+
     function updateCartDisplay() {
       const itemsDiv = document.getElementById('cart-items');
       const totalEl = document.getElementById('cart-total');
       itemsDiv.innerHTML = '';
       let total = 0;
+
       cart.forEach((item, index) => {
         total += item.price * item.quantity;
         const div = document.createElement('div');
-        div.className = 'cart-item';
-        div.innerHTML = `<span>${item.name} × ${item.quantity}</span><span>${(item.price * item.quantity).toLocaleString()} DZD</span><button onclick="removeFromCart(${index})">×</button>`;
+        div.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border-gold);';
+        div.innerHTML = `
+          <span>${item.name} × ${item.quantity}</span>
+          <span>${(item.price * item.quantity).toLocaleString()} DZD</span>
+          <button style="background:none;border:none;color:var(--gold);font-size:1.4rem;cursor:pointer;" onclick="removeFromCart(${index})">×</button>
+        `;
         itemsDiv.appendChild(div);
       });
+
       totalEl.textContent = total.toLocaleString() + ' DZD';
     }
-    function removeFromCart(index) {
+
+    window.removeFromCart = function(index) {
       cart.splice(index, 1);
       saveCart();
       updateCartDisplay();
-    }
+    };
+
     document.querySelectorAll('.add-to-cart').forEach(btn => {
       btn.addEventListener('click', () => {
-        const lang = html.getAttribute('data-lang');
-        const name = btn.dataset[`name${lang}`] || btn.dataset.nameEn;
-        const price = parseInt(btn.dataset.price);
+        const lang = html.getAttribute('data-lang') || 'en';
+        const name = btn.dataset[`name-${lang}`] || btn.dataset.nameEn || 'Product';
+        const price = Number(btn.dataset.price) || 0;
+
         const found = cart.find(i => i.name === name);
         if (found) found.quantity++;
         else cart.push({ name, price, quantity: 1 });
+
         saveCart();
         updateCartDisplay();
       });
     });
 
-    // Modal
     document.getElementById('cart-icon').onclick = () => {
       document.getElementById('cart-modal').style.display = 'flex';
       updateCartDisplay();
     };
+
     document.getElementById('close-modal').onclick = () => {
       document.getElementById('cart-modal').style.display = 'none';
     };
 
-    // Form submit (inchangé)
-    document.getElementById('customer-form').addEventListener('submit', async e => {
+    document.getElementById('customer-form').addEventListener('submit', e => {
       e.preventDefault();
-      // ... (ton code original)
+      const msg = document.getElementById('success-message');
+      msg.innerHTML = '<p style="color:#d4af37; margin-top:20px;">Order submitted! We will contact you soon. ♥</p>';
+      cart = [];
+      saveCart();
+      updateCartDisplay();
+      e.target.reset();
     });
 
+    updatePlaceholders();
     saveCart();
     updateCartDisplay();
   </script>
