@@ -1,3 +1,7 @@
+console.log("TOKEN mevcut mu:", !!env.TELEGRAM_BOT_TOKEN);
+console.log("CHAT_ID mevcut mu:", !!env.TELEGRAM_CHAT_ID);
+console.log("TOKEN değeri (ilk 10 karakter):", env.TELEGRAM_BOT_TOKEN ? env.TELEGRAM_BOT_TOKEN.substring(0, 10) + "..." : "yok");
+console.log("CHAT_ID değeri:", env.TELEGRAM_CHAT_ID || "yok");
 export default {
   async fetch(request, env) {
     console.log("Worker çağrıldı:", request.method);  // ← Log ekledik
