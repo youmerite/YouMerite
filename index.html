@@ -574,11 +574,12 @@
       };
 
       try {
-        const response = await fetch('https://youmerite.0muharremsari.workers.dev', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
+       const response = await fetch('/api/send', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(payload)
+});
+
 
         const data = await response.json();
 
