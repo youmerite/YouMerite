@@ -2,13 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sayfa Bulunamadı – Yönlendiriliyorsunuz...</title>
+  <!-- 0 saniyede yönlendirme (meta refresh) -->
   <meta http-equiv="refresh" content="0; url=https://youmerite.com/">
-  <title>Redirecting...</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #f8f8f8; color: #333; }
+    h1 { color: #e74c3c; }
+    p { font-size: 1.2em; }
+    a { color: #3498db; text-decoration: none; font-weight: bold; }
+  </style>
 </head>
 <body>
-  <p>Redirecting to <a href="https://youmerite.com/">youmerite.com</a>...</p>
+  <h1>404 - Sayfa Bulunamadı</h1>
+  <p>Aradığınız sayfa artık burada değil. Lütfen bekleyin, sizi ana sayfaya yönlendiriyoruz...</p>
+  <p>Ya da doğrudan <a href="https://youmerite.com/">youmerite.com</a> tıklayın.</p>
+
+  <!-- JavaScript ile daha güvenilir yönlendirme (meta refresh bazen engellenir) -->
   <script>
-    window.location.href = "https://youmerite.com/" + window.location.pathname + window.location.search;
+    window.location.replace("https://youmerite.com/" + window.location.pathname + window.location.search);
   </script>
 </body>
 </html>
