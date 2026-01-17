@@ -1,10 +1,12 @@
-console.log("TOKEN mevcut mu:", !!env.TELEGRAM_BOT_TOKEN);
-console.log("CHAT_ID mevcut mu:", !!env.TELEGRAM_CHAT_ID);
-console.log("TOKEN değeri (ilk 10 karakter):", env.TELEGRAM_BOT_TOKEN ? env.TELEGRAM_BOT_TOKEN.substring(0, 10) + "..." : "yok");
-console.log("CHAT_ID değeri:", env.TELEGRAM_CHAT_ID || "yok");
 export default {
   async fetch(request, env) {
-    console.log("Worker çağrıldı:", request.method);  // ← Log ekledik
+    // ← Log'lar buraya geliyor (env burada tanımlı)
+    console.log("TOKEN mevcut mu:", !!env.TELEGRAM_BOT_TOKEN);
+    console.log("CHAT_ID mevcut mu:", !!env.TELEGRAM_CHAT_ID);
+    console.log("TOKEN değeri (ilk 10 karakter):", env.TELEGRAM_BOT_TOKEN ? env.TELEGRAM_BOT_TOKEN.substring(0, 10) + "..." : "yok");
+    console.log("CHAT_ID değeri:", env.TELEGRAM_CHAT_ID || "yok");
+
+    console.log("Worker çağrıldı:", request.method);
 
     if (request.method === "OPTIONS") {
       return new Response(null, { headers: corsHeaders() });
@@ -16,7 +18,7 @@ export default {
 
     try {
       const data = await request.json();
-      console.log("Gelen veri:", data);  // ← Payload'ı logla
+      console.log("Gelen veri:", data);
 
       if (!env.TELEGRAM_BOT_TOKEN || !env.TELEGRAM_CHAT_ID) {
         console.error("Secrets eksik! TOKEN:", !!env.TELEGRAM_BOT_TOKEN, "CHAT_ID:", !!env.TELEGRAM_CHAT_ID);
@@ -52,7 +54,7 @@ ${(data.cart_items || []).map(i => `- ${i}`).join("\n")}
       });
 
       const result = await tgRes.json();
-      console.log("Telegram yanıtı:", result);  // ← En kritik log
+      console.log("Telegram yanıtı:", result);
 
       if (!tgRes.ok || !result.ok) {
         console.error("Telegram hata:", result);
@@ -63,7 +65,7 @@ ${(data.cart_items || []).map(i => `- ${i}`).join("\n")}
         headers: { "Content-Type": "application/json", ...corsHeaders() }
       });
     } catch (err) {
-      console.error("Worker hatası:", err.message);  // ← Hata logu
+      console.error("Worker hatası:", err.message);
       return new Response(JSON.stringify({ success: false, error: err.message }), {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders() }
@@ -72,7 +74,6 @@ ${(data.cart_items || []).map(i => `- ${i}`).join("\n")}
   },
 };
 
-// CORS header'larını fonksiyon yapalım
 function corsHeaders() {
   return {
     "Access-Control-Allow-Origin": "*",
