@@ -1,14 +1,9 @@
 export default {
   async fetch(request, env) {
-    // CORS preflight
+    console.log("Worker çağrıldı:", request.method);  // ← Log ekledik
+
     if (request.method === "OPTIONS") {
-      return new Response(null, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "POST, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type",
-        }
-      });
+      return new Response(null, { headers: corsHeaders() });
     }
 
     if (request.method !== "POST") {
@@ -17,6 +12,13 @@ export default {
 
     try {
       const data = await request.json();
+      console.log("Gelen veri:", data);  // ← Payload'ı logla
+
+      if (!env.TELEGRAM_BOT_TOKEN || !env.TELEGRAM_CHAT_ID) {
+        console.error("Secrets eksik! TOKEN:", !!env.TELEGRAM_BOT_TOKEN, "CHAT_ID:", !!env.TELEGRAM_CHAT_ID);
+        throw new Error("Telegram secrets missing");
+      }
+
       const message = `
 🛒 Yeni Sipariş
 
@@ -32,30 +34,45 @@ ${(data.cart_items || []).map(i => `- ${i}`).join("\n")}
 💰 Toplam: ${data.total_price || "N/A"}
       `;
 
+      console.log("Gönderilecek mesaj:", message);
+
       const url = `https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`;
 
-      await fetch(url, {
+      const tgRes = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           chat_id: env.TELEGRAM_CHAT_ID,
-          text: message,
+          text: message.trim(),
         }),
       });
 
+      const result = await tgRes.json();
+      console.log("Telegram yanıtı:", result);  // ← En kritik log
+
+      if (!tgRes.ok || !result.ok) {
+        console.error("Telegram hata:", result);
+        throw new Error(result.description || "Telegram failed");
+      }
+
       return new Response(JSON.stringify({ success: true }), {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "POST, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type",
-        }
+        headers: { "Content-Type": "application/json", ...corsHeaders() }
       });
     } catch (err) {
+      console.error("Worker hatası:", err.message);  // ← Hata logu
       return new Response(JSON.stringify({ success: false, error: err.message }), {
         status: 500,
-        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
+        headers: { "Content-Type": "application/json", ...corsHeaders() }
       });
     }
   },
 };
+
+// CORS header'larını fonksiyon yapalım
+function corsHeaders() {
+  return {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+  };
+}
